@@ -1,89 +1,628 @@
 //
 //  ViewController.swift
-//  jamieg
+//  Jamie"s Magic Fingers
 //
-//  Created by Jason Mintz on 10/9/17.
+//  Created by Jason Mintz on 11/26/17.
 //  Copyright © 2017 Jason Mintz. All rights reserved.
 //
 
 import UIKit
+import GoogleMobileAds
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    @IBOutlet weak var customPicker: UIPickerView!
-    @IBOutlet weak var nLabel: UILabel!
-    @IBOutlet weak var fingering: UIImageView!
-
-    @IBOutlet weak var leftCircle: UIImageView!
-    @IBOutlet weak var midCircle: UIImageView!
-    @IBOutlet weak var rightCircle: UIImageView!
+    @IBOutlet weak var topContainer: UIView!
+    @IBOutlet weak var vStaffShadow: UIView!
+    @IBOutlet weak var hStaffShadow: UIView!
+    @IBOutlet weak var chooseInstrument: UILabel!
+    @IBOutlet weak var backgroundTop: UIView!
+    @IBOutlet weak var vInstrumentShadow: UIView!
+    @IBOutlet weak var hInstrumentShadow: UIView!
     
-    var pickerData: [[String]] = [[String]]()
-    var trumpFingers = [[Int]]()
-    var trumpCode = [Int]()
+    @IBOutlet weak var topAd: GADBannerView!
+    @IBOutlet weak var adView: GADBannerView!
+    @IBOutlet weak var buttonBackground: UIImageView!
+    @IBOutlet weak var buttonStack: UIStackView!
+    @IBOutlet weak var pickerBackground: UIView!
+    @IBOutlet weak var heading: UILabel!
+    @IBOutlet weak var vInstrument: UIImageView!
+    @IBOutlet weak var vStaff: UIImageView!
+    @IBOutlet weak var hInstrument: UIImageView!
+    @IBOutlet weak var hStaff: UIImageView!
+    
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var picker: UIPickerView!
+    @IBOutlet weak var pageChooser: UIPageControl!
+    
+    @IBOutlet weak var flatButton: UIButton!
+    @IBOutlet weak var naturalButton: UIButton!
+    @IBOutlet weak var sharpButton: UIButton!
+    
+    var instruments = [String]()
+    var hInstruments = [String]()
+    var vInstruments = [String]()
+    
+    var ind = Int()
+    
+    var pos = [String:[String:[String]]]()
+    
+    let customBlue = UIColor(red:38/255.0,green:208/255.0,blue:206/255.0,alpha:1)
+    
+    let customLightBlue = UIColor.clear
+    
+    var minMax = [String:[String:Int]]()
+    var vList = [[String:String]]()
+
+    var trebInstruments = [String]()
+    var bassInstruments = [String]()
+
+    func getStatus() -> [String] {
+        let instr = instruments[picker.selectedRow(inComponent: 0)]
+        let sliderVal = round(slider.value)
+        var note = ""
+        var key = ""
+        
+        if trebInstruments.contains(instr){
+            note = tNotes[Int(sliderVal)]
+        } else {
+            note = bNotes[Int(sliderVal)]
+        }
+        
+        if flatButton.isSelected{
+            key = "b"
+        } else if sharpButton.isSelected{
+            key = "#"
+        } else {
+            key = ""
+        }
+        
+        var imgList = [String]()
+        var noteDict = pos[note+key]
+        if noteDict![instr] != nil {
+            imgList = noteDict![instr]!
+        }
+        return imgList
+    }
+    
+    var bNotes = [String]()
+    var tNotes = [String]()
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return instruments.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return instruments[row] as String
+    }
+    
+    override func viewDidLayoutSubviews() {
+        let startColor = UIColor(red:26/255.0,green:41/255.0,blue:128/255.0,alpha:1)
+        let endColor = UIColor(red:38/255.0,green:208/255.0,blue:206/255.0,alpha:1)
+        let gradient = CAGradientLayer()
+        gradient.frame = backgroundTop.bounds
+        gradient.colors = [startColor.cgColor, endColor.cgColor]
+        backgroundTop.layer.insertSublayer(gradient, at: 0)
+        
+        let pEndColor = UIColor(red:255/255.0,green:255/255.0,blue:255/255.0,alpha:1)
+        let pStartColor = UIColor(red:38/255.0,green:208/255.0,blue:206/255.0,alpha:1)
+        let pGradient = CAGradientLayer()
+        pGradient.frame = backgroundTop.bounds
+        pGradient.colors = [pStartColor.cgColor, pEndColor.cgColor]
+        pickerBackground.layer.insertSublayer(pGradient, at: 0)
+        
+        buttonBackground.layer.borderColor = UIColor.black.cgColor
+        buttonBackground.layer.borderWidth = 1.0
+        buttonBackground.backgroundColor = UIColor.clear
+        
+        slider.backgroundColor = UIColor.clear
+        slider.isContinuous = false
+
+        sharpButton.layer.borderWidth = 0
+        flatButton.layer.borderWidth = 0
+        naturalButton.layer.borderWidth = 0
+    
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let defaults = UserDefaults.standard
+        let instr = defaults.integer(forKey: "Instrument")
+
+        if(instr != 0){
+            picker.selectRow(instr, inComponent: 0, animated: true)
+            picker.delegate?.pickerView?(picker, didSelectRow: instr, inComponent: 0)
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        customPicker.delegate=self
-        customPicker.dataSource = self
         
-        pickerData = [["Trumpet"],
-                      ["C","B","A# (Bb)","A","G# (Ab)","G","F# (Gb)","F","E","D# (Eb)","D","C# (Db)","C","B",
-                       "A# (Bb)","A","G# (Ab)","G","F# (Gb)","F","E","D# (Eb)","D","C# (Db)","C","B",
-                       "A# (Bb)","A","G# (Ab)","G","F# (Gb)"]]
+        adView.rootViewController = self
+        adView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        adView.load(GADRequest())
         
-        trumpFingers = [[0,0,0],[0,1,0],[1,0,0],[1,1,0],[0,1,1],[0,0,0],[0,1,0],[1,0,0],[0,0,0],[0,1,0],
-                        [1,0,0],[1,1,0],[0,0,0],[0,1,0],[1,0,0],[1,1,0],[0,1,1],[0,0,0],[0,1,0],[1,0,0],
-                        [1,1,0],[0,1,1],[1,0,1],[1,1,1],[0,0,0],[0,1,0],[1,0,0],[1,1,0],[0,1,1],[1,0,1],[1,1,1]
+        picker.delegate = self
+        picker.dataSource = self
+        
+        flatButton.backgroundColor = customLightBlue
+        sharpButton.backgroundColor = customLightBlue
+        naturalButton.backgroundColor = customBlue
+        flatButton.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        sharpButton.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        naturalButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        flatButton.layer.borderWidth = 1
+        flatButton.layer.borderColor = UIColor.black.cgColor
+        naturalButton.layer.borderWidth = 1
+        naturalButton.layer.borderColor = UIColor.black.cgColor
+        sharpButton.layer.borderWidth = 1
+        sharpButton.layer.borderColor = UIColor.black.cgColor
+        flatButton.isSelected = false
+        naturalButton.isSelected = true
+        sharpButton.isSelected = false
+        
+        for lay in [hStaffShadow, vStaffShadow, hInstrumentShadow, vInstrumentShadow]{
+            lay?.layer.shadowColor = UIColor.black.cgColor
+            lay?.layer.shadowOpacity = 1
+            lay?.layer.shadowRadius = 10
+            lay?.clipsToBounds = false
+        }
+        
+        chooseInstrument.isHidden = false
+        
+        for item in [hStaff,vStaff,hInstrument,vInstrument] {
+            item?.layer.masksToBounds = true
+            item?.layer.cornerRadius = 20
+        }
+        
+        slider.layer.masksToBounds = true
+        slider.layer.cornerRadius = 15
+        
+        ind = 0
+    
+        vInstrument.isHidden = true
+        vStaffShadow.isHidden = true
+        hInstrument.isHidden = true
+        hStaffShadow.isHidden = true
+        vInstrumentShadow.isHidden = true
+        hInstrumentShadow.isHidden = true
+        vStaff.isHidden = true
+        hStaff.isHidden = true
+        
+        minMax = ["Alto Sax":["Minimum":20,"Maximum":42],"Baritone Sax":["Minimum":19,"Maximum":42],"Clarinet":["Minimum":16,"Maximum":38],"Euphonium":["Minimum":7,"Maximum":27],"Flute":["Minimum":22,"Maximum":42],"Horn":["Minimum":14,"Maximum":35],"Tenor Sax":["Minimum":20,"Maximum":42],"Trombone":["Minimum":9,"Maximum":27],"Trumpet":["Minimum":18,"Maximum":35],"Recorder":["Minimum":21,"Maximum":32],"Bassoon":["Minimum":5,"Maximum":29]]
+        
+        instruments = ["Instruments","Alto Sax","Baritone Sax","Bassoon","Clarinet","Euphonium","Flute","Horn","Recorder","Tenor Sax","Trombone","Trumpet"]
+
+        hInstruments = ["Trombone","Flute","Trumpet","Euphonium","Horn"]
+        vInstruments = ["Clarinet","Alto Sax","Tenor Sax","Baritone Sax","Recorder","Bassoon"]
+        
+        trebInstruments = ["Trumpet","Flute","Clarinet","Alto Sax","Tenor Sax","Baritone Sax","Horn","Recorder"]
+        bassInstruments = ["Trombone","Euphonium","Bassoon"]
+        
+
+        pos = [
+            "C1":[:],
+            "D1":[:],
+            "E1":[:],
+            "F1":[:],
+            "G1":[:],
+            "A1":[:],
+            "B1":["Bassoon":["1"]],
+            "C2":["Euphonium":["23"],"Bassoon":["2"]],
+            "D2":["Euphonium":["15"],"Bassoon":["4"]],
+            "E2":["Trombone":["7"],"Euphonium":["13","20"],"Bassoon":["6"]],
+            "F2":["Trombone":["6"],"Euphonium":["11","18"],"Bassoon":["7"]],
+            "G2":["Trombone":["4"],"Euphonium":["17","10"],"Bassoon":["9"]],
+            "A2":["Trombone":["2"],"Euphonium":["9"],"Bassoon":["11"]],
+            "B2":["Trombone":["7"],"Euphonium":["20","13"],"Bassoon":["13"]],
+            "C3":["Trombone":["6"],"Euphonium":["11","18"],"Horn":["0"],"Bassoon":["14"]],
+            "D3":["Trombone":["4"],"Euphonium":["17","10"],"Horn":["2"],"Bassoon":["16"]],
+            "E3":["Trombone":["2","7"],"Euphonium":["9"],"Horn":["4"],"Clarinet":["1","2","3"],"Bassoon":["18"]],
+            "F3":["Trombone":["1","6"],"Euphonium":["8"],"Horn":["5"],"Clarinet":["4","5"],"Bassoon":["19"]],
+            "G3":["Trombone":["4"],"Trumpet":["5"],"Euphonium":["18","10"],"Horn":["7"],"Clarinet":["7"],"Bassoon":["21"]],
+            "A3":["Trombone":["2","6"],"Trumpet":["4"],"Euphonium":["9"],"Baritone Sax":["0"],"Horn":["9"],"Clarinet":["11"],"Bassoon":["23"]],
+            "B3":["Trombone":["4","7"],"Trumpet":["2"],"Euphonium":["17"],"Tenor Sax":["2"],"Alto Sax":["2"],"Baritone Sax":["2"],"Horn":["11"],"Clarinet":["13","14"],"Bassoon":["25"]],
+            "C4":["Trombone":["3","6"],"Trumpet":["0"],"Euphonium":["16","18"],"Flute":["0"],"Tenor Sax":["3"],"Alto Sax":["3"],"Baritone Sax":["3"],"Horn":["12"],"Clarinet":["15"],"Recorder":["0"],"Bassoon":["26"]],
+            "D4":["Trombone":["1","4","7"],"Trumpet":["5"],"Euphonium":["8","17"],"Flute":["2"],"Tenor Sax":["5"],"Alto Sax":["5"],"Baritone Sax":["5"],"Horn":["14"],"Clarinet":["17"],"Recorder":["2"],"Bassoon":["28"]],
+            "E4":["Trombone":["2","5","7"],"Trumpet":["4"],"Euphonium":["9"],"Flute":["4"],"Tenor Sax":["7"],"Alto Sax":["7"],"Baritone Sax":["7"],"Horn":["16"],"Clarinet":["21"],"Recorder":["4"],"Bassoon":["30"]],
+            "F4":["Trombone":["1","4","6"],"Trumpet":["1"],"Euphonium":["8"],"Flute":["5"],"Tenor Sax":["8"],"Alto Sax":["8"],"Baritone Sax":["8"],"Horn":["17"],"Clarinet":["22"],"Recorder":["5"],"Bassoon":["31"]],
+            "G4":["Trombone":["2","4","6"],"Trumpet":["0"],"Euphonium":["17","10"],"Flute":["7"],"Tenor Sax":["10"],"Alto Sax":["10"],"Baritone Sax":["10"],"Horn":["19"],"Clarinet":["25"],"Recorder":["7"],"Bassoon":["33"]],
+            "A4":["Trombone":["2","4","6"],"Trumpet":["4"],"Euphonium":["9"],"Flute":["9"],"Tenor Sax":["12"],"Alto Sax":["12"],"Baritone Sax":["12"],"Horn":["21"],"Clarinet":["27","28","29"],"Recorder":["9"],"Bassoon":["35"]],
+            "B4":["Trombone":["2","4","6"],"Trumpet":["2"],"Euphonium":["9","17"],"Flute":["11"],"Tenor Sax":["14"],"Alto Sax":["14"],"Baritone Sax":["14"],"Horn":["23"],"Clarinet":["33","34","35"],"Recorder":["11"],"Bassoon":["37"]],
+            "C5":["Trumpet":["0"],"Flute":["12"],"Tenor Sax":["15"],"Alto Sax":["15"],"Baritone Sax":["15"],"Horn":["24"],"Clarinet":["36","37"],"Recorder":["12"],"Bassoon":["38"]],
+            "D5":["Trumpet":["1"],"Flute":["14"],"Tenor Sax":["17"],"Alto Sax":["17"],"Baritone Sax":["17"],"Horn":["26"],"Clarinet":["41"],"Recorder":["14"],"Bassoon":["40"]],
+            "E5":["Trumpet":["0"],"Flute":["16"],"Tenor Sax":["19"],"Alto Sax":["19"],"Baritone Sax":["19"],"Horn":["28"],"Clarinet":["43"],"Recorder":["16"]],
+            "F5":["Trumpet":["1"],"Flute":["17"],"Tenor Sax":["20"],"Alto Sax":["20"],"Baritone Sax":["20"],"Horn":["29"],"Clarinet":["44"],"Recorder":["17"]],
+            "G5":["Trumpet":["0"],"Flute":["19"],"Tenor Sax":["22"],"Alto Sax":["22"],"Baritone Sax":["22"],"Horn":["31"],"Clarinet":["47"],"Recorder":["19"]],
+            "A5":["Trumpet":["4"],"Flute":["21"],"Tenor Sax":["24"],"Alto Sax":["24"],"Baritone Sax":["24"],"Horn":["33"],"Clarinet":["49"]],
+            "B5":["Trumpet":["2"],"Flute":["23"],"Tenor Sax":["26"],"Alto Sax":["26"],"Baritone Sax":["26"],"Horn":["35"],"Clarinet":["53"]],
+            "C6":["Trumpet":["0"],"Flute":["24"],"Tenor Sax":["27"],"Alto Sax":["27"],"Baritone Sax":["27"],"Horn":["36"],"Clarinet":["54"]],
+            "D6":["Flute":["26"],"Tenor Sax":["29"],"Alto Sax":["29"],"Baritone Sax":["29"],"Clarinet":["58"]],
+            "E6":["Flute":["28"],"Tenor Sax":["31"],"Alto Sax":["31"],"Baritone Sax":["31"],"Clarinet":["59"]],
+            "F6":["Flute":["29"],"Tenor Sax":["32"],"Alto Sax":["32"],"Baritone Sax":["32"],"Clarinet":["60","61"]],
+            "G6":["Flute":["31"],"Tenor Sax":["34"],"Alto Sax":["34"],"Baritone Sax":["34"]],
+            "A6":["Flute":["33"],"Tenor Sax":["36"],"Alto Sax":["36"],"Baritone Sax":["36"]],
+            "B6":["Flute":["35"],"Tenor Sax":["38"],"Alto Sax":["38"],"Baritone Sax":["38"]],
+            "C7":["Flute":["36"],"Tenor Sax":["39"],"Alto Sax":["39"],"Baritone Sax":["39"]],
+            "C1#":[:],
+            "D1#":[:],
+            "E1#":[:],
+            "F1#":[:],
+            "G1#":[:],
+            "A1#":["Bassoon":["0"]],
+            "B1#":[:],
+            "C2#":["Euphonium":["21"],"Bassoon":["3"]],
+            "D2#":["Euphonium":["21"],"Bassoon":["5"]],
+            "E2#":[:],
+            "F2#":["Trombone":["5"],"Euphonium":["12"],"Bassoon":["8"]],
+            "G2#":["Trombone":["3"],"Euphonium":["16"],"Bassoon":["10"]],
+            "A2#":["Trombone":["1"],"Euphonium":["8"],"Bassoon":["12"]],
+            "B2#":[:],
+            "C3#":["Trombone":["5"],"Euphonium":["12"],"Horn":["1"],"Bassoon":["15"]],
+            "D3#":["Trombone":["3"],"Euphonium":["16"],"Horn":["3"],"Bassoon":["17"]],
+            "E3#":[:],
+            "F3#":["Trombone":["5"],"Trumpet":["7"],"Euphonium":["12"],"Horn":["6"],"Clarinet":["6","7","8"],"Bassoon":["20"]],
+            "G3#":["Trombone":["3","7"],"Trumpet":["6"],"Euphonium":["16"],"Horn":["8"],"Clarinet":["10"],"Bassoon":["22"]],
+            "A3#":["Trombone":["1","5"],"Trumpet":["1"],"Euphonium":["8"],"Tenor Sax":["1"],"Alto Sax":["1"],"Baritone Sax":["1"],"Horn":["10"],"Clarinet":["12"],"Bassoon":["24"]],
+            "B3#":[:],
+            "C4#":["Trombone":["2","5"],"Trumpet":["7"],"Euphonium":["9","12"],"Flute":["1"],"Tenor Sax":["4"],"Alto Sax":["4"],"Baritone Sax":["4"],"Horn":["13"],"Clarinet":["16"],"Recorder":["1"],"Bassoon":["27"]],
+            "D4#":["Trombone":["3","6"],"Trumpet":["6"],"Euphonium":["16"],"Flute":["6"],"Tenor Sax":["1"],"Alto Sax":["6"],"Baritone Sax":["6"],"Horn":["15"],"Clarinet":["18","19","20"],"Recorder":["3"],"Bassoon":["29"]],
+            "E4#":[:],
+            "F4#":["Trombone":["3","5","7"],"Trumpet":["2"],"Euphonium":["12"],"Flute":["3"],"Tenor Sax":["9"],"Alto Sax":["9"],"Baritone Sax":["9"],"Horn":["18"],"Clarinet":["23","24"],"Recorder":["6"],"Bassoon":["32"]],
+            "G4#":["Trombone":["3","5","7"],"Trumpet":["6"],"Euphonium":["16"],"Flute":["8"],"Tenor Sax":["11"],"Alto Sax":["11"],"Baritone Sax":["11"],"Horn":["20"],"Clarinet":["26"],"Recorder":["8"],"Bassoon":["34"]],
+            "A4#":["Trombone":["1","3","5"],"Trumpet":["1"],"Euphonium":["8"],"Flute":["10"],"Tenor Sax":["13"],"Alto Sax":["13"],"Baritone Sax":["13"],"Horn":["22"],"Clarinet":["30","31","32"],"Recorder":["10"],"Bassoon":["36"]],
+            "B4#":[:],
+            "C5#":["Trumpet":["4"],"Flute":["13"],"Tenor Sax":["16"],"Alto Sax":["16"],"Baritone Sax":["16"],"Horn":["25"],"Clarinet":["38","39","40"],"Recorder":["13"],"Bassoon":["39"]],
+            "D5#":["Trumpet":["2"],"Flute":["15"],"Tenor Sax":["18"],"Alto Sax":["18"],"Baritone Sax":["18"],"Horn":["27"],"Clarinet":["42"],"Recorder":["15"]],
+            "E5#":[:],
+            "F5#":["Trumpet":["2"],"Flute":["18"],"Tenor Sax":["21"],"Alto Sax":["21"],"Baritone Sax":["21"],"Horn":["30"],"Clarinet":["45","46"],"Recorder":["18"]],
+            "G5#":["Trumpet":["6"],"Flute":["20"],"Tenor Sax":["23"],"Alto Sax":["23"],"Baritone Sax":["23"],"Horn":["32"],"Clarinet":["48"]],
+            "A5#":["Trumpet":["1"],"Flute":["22"],"Tenor Sax":["25"],"Alto Sax":["25"],"Baritone Sax":["25"],"Horn":["34"],"Clarinet":["50","51","52"]],
+            "B5#":[:],
+            "C6#":["Flute":["25"],"Tenor Sax":["28"],"Alto Sax":["28"],"Baritone Sax":["28"],"Clarinet":["55"]],
+            "D6#":["Flute":["27"],"Tenor Sax":["30"],"Alto Sax":["30"],"Baritone Sax":["30"],"Clarinet":["57","58"]],
+            "E6#":[:],
+            "F6#":["Flute":["30"],"Tenor Sax":["33"],"Alto Sax":["33"],"Baritone Sax":["33"]],
+            "G6#":["Flute":["32"],"Tenor Sax":["35"],"Alto Sax":["35"],"Baritone Sax":["35"]],
+            "A6#":["Flute":["34"],"Tenor Sax":["37"],"Alto Sax":["37"],"Baritone Sax":["37"]],
+            "B6#":[:],
+            "C7#":[:],
+            "C1b":[:],
+            "D1b":[:],
+            "E1b":[:],
+            "F1b":[:],
+            "G1b":[:],
+            "A1b":[:],
+            "B1b":["Bassoon":["0"]],
+            "C2b":[:],
+            "D2b":["Euphonium":["21"],"Bassoon":["3"]],
+            "E2b":["Euphonium":["21"],"Bassoon":["5"]],
+            "F2b":[:],
+            "G2b":["Trombone":["5"],"Euphonium":["12"],"Bassoon":["8"]],
+            "A2b":["Trombone":["3"],"Euphonium":["16"],"Bassoon":["10"]],
+            "B2b":["Trombone":["1"],"Euphonium":["8"],"Bassoon":["12"]],
+            "C3b":[:],
+            "D3b":["Trombone":["5"],"Euphonium":["12"],"Horn":["1"],"Bassoon":["15"]],
+            "E3b":["Trombone":["3"],"Euphonium":["16"],"Horn":["3"],"Bassoon":["17"]],
+            "F3b":[:],
+            "G3b":["Trombone":["5"],"Trumpet":["7"],"Euphonium":["12"],"Horn":["6"],"Clarinet":["6","7","8"],"Bassoon":["20"]],
+            "A3b":["Trombone":["3","7"],"Trumpet":["6"],"Euphonium":["16"],"Horn":["8"],"Clarinet":["10"],"Bassoon":["22"]],
+            "B3b":["Trombone":["1","5"],"Trumpet":["1"],"Euphonium":["8"],"Tenor Sax":["1"],"Alto Sax":["1"],"Baritone Sax":["1"],"Horn":["10"],"Clarinet":["12"],"Bassoon":["24"]],
+            "C4b":[:],
+            "D4b":["Trombone":["2","5"],"Trumpet":["7"],"Euphonium":["9","12"],"Flute":["1"],"Tenor Sax":["4"],"Alto Sax":["4"],"Baritone Sax":["4"],"Horn":["13"],"Clarinet":["16"],"Recorder":["1"],"Bassoon":["27"]],
+            "E4b":["Trombone":["3","6"],"Trumpet":["6"],"Euphonium":["16"],"Flute":["3"],"Tenor Sax":["6"],"Alto Sax":["6"],"Baritone Sax":["6"],"Horn":["15"],"Clarinet":["18","19","20"],"Recorder":["3"],"Bassoon":["29"]],
+            "F4b":[:],
+            "G4b":["Trombone":["3","5","7"],"Trumpet":["2"],"Euphonium":["12"],"Flute":["6"],"Tenor Sax":["9"],"Alto Sax":["9"],"Baritone Sax":["9"],"Horn":["18"],"Clarinet":["23","24"],"Recorder":["6"],"Bassoon":["32"]],
+            "A4b":["Trombone":["3","5","7"],"Trumpet":["6"],"Euphonium":["16"],"Flute":["8"],"Tenor Sax":["11"],"Alto Sax":["11"],"Baritone Sax":["11"],"Horn":["20"],"Clarinet":["26"],"Recorder":["8"],"Bassoon":["34"]],
+            "B4b":["Trombone":["1","3","5"],"Trumpet":["1"],"Euphonium":["8"],"Flute":["10"],"Tenor Sax":["13"],"Alto Sax":["13"],"Baritone Sax":["13"],"Horn":["22"],"Clarinet":["30","31","32"],"Recorder":["10"],"Bassoon":["36"]],
+            "C5b":[:],
+            "D5b":["Trumpet":["4"],"Flute":["13"],"Tenor Sax":["16"],"Alto Sax":["16"],"Baritone Sax":["16"],"Horn":["25"],"Clarinet":["38","39","40"],"Recorder":["13"],"Bassoon":["39"]],
+            "E5b":["Trumpet":["2"],"Flute":["15"],"Tenor Sax":["18"],"Alto Sax":["18"],"Baritone Sax":["18"],"Horn":["27"],"Clarinet":["42"],"Recorder":["15"]],
+            "F5b":[:],
+            "G5b":["Trumpet":["2"],"Flute":["18"],"Tenor Sax":["21"],"Alto Sax":["21"],"Baritone Sax":["21"],"Horn":["30"],"Clarinet":["45","46"],"Recorder":["18"]],
+            "A5b":["Trumpet":["6"],"Flute":["20"],"Tenor Sax":["23"],"Alto Sax":["23"],"Baritone Sax":["23"],"Horn":["32"],"Clarinet":["48"]],
+            "B5b":["Trumpet":["1"],"Flute":["22"],"Tenor Sax":["25"],"Alto Sax":["25"],"Baritone Sax":["25"],"Horn":["34"],"Clarinet":["50","51","52"]],
+            "C6b":[:],
+            "D6b":["Flute":["25"],"Tenor Sax":["28"],"Alto Sax":["28"],"Baritone Sax":["28"],"Clarinet":["55"]],
+            "E6b":["Flute":["27"],"Tenor Sax":["30"],"Alto Sax":["30"],"Baritone Sax":["30"],"Clarinet":["57","58"]],
+            "F6b":[:],
+            "G6b":["Flute":["30"],"Tenor Sax":["33"],"Alto Sax":["33"],"Baritone Sax":["33"]],
+            "A6b":["Flute":["32"],"Tenor Sax":["35"],"Alto Sax":["35"],"Baritone Sax":["35"]],
+            "B6b":["Flute":["34"],"Tenor Sax":["37"],"Alto Sax":["37"],"Baritone Sax":["37"]],
+            "C7b":[:]
         ]
+        
+        tNotes = ["A2","B2","C3","D3","E3","F3","G3","A3","B3","C4","D4","E4","F4","G4","A4","B4","C5","D5","E5","F5","G5","A5","B5","C6","D6","E6","F6","G6","A6","B6","C7"]
+        
+        bNotes = ["C1","D1","E1","F1","G1","A1","B1","C2","D2","E2","F2","G2","A2","B2","C3","D3","E3","F3","G3","A3","B3","C4","D4","E4","F4","G4","A4","B4","C5","D5","E5"]
+        
+        
+        slider.minimumValue = 0
+        slider.maximumValue = Float(tNotes.count)-1
+        slider.value = 15
+
+        // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func sliderMoved(_ sender: Any) {
+        moveNote(i:0)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let defaults = UserDefaults.standard
+        defaults.set(row, forKey: "Instrument")
+        
+        let instr = instruments[picker.selectedRow(inComponent: 0)]
+        if instr == "Instruments" {
+            moveNote(i:0)
+            return
+        }
+        var min = Float(minMax[instr]!["Minimum"]!)
+        var max = Float(minMax[instr]!["Maximum"]!)
+        
+        if trebInstruments.contains(instr) {
+            min = min - 12.0
+            max = max - 12.0
+        }
+        
+        if slider.value < min {
+            slider.value = min
+        } else if slider.value > max {
+            slider.value = max
+        }
+        
+        slider.minimumValue = min
+        slider.maximumValue = max
+        
+        moveNote(i:0)
+        }
+    
+    @IBAction func flatButtonPressed(_ sender: Any) {
+        flatButton.backgroundColor = customBlue
+        sharpButton.backgroundColor = customLightBlue
+        naturalButton.backgroundColor = customLightBlue
+        flatButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        sharpButton.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        naturalButton.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        flatButton.isSelected = true
+        naturalButton.isSelected = false
+        sharpButton.isSelected = false
+        moveNote(i:0)
+    }
+    @IBAction func naturalButtonPressed(_ sender: Any) {
+        flatButton.backgroundColor = customLightBlue
+        sharpButton.backgroundColor = customLightBlue
+        naturalButton.backgroundColor = customBlue
+        flatButton.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        sharpButton.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        naturalButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        flatButton.isSelected = false
+        naturalButton.isSelected = true
+        sharpButton.isSelected = false
+        moveNote(i:0)
+    }
+    @IBAction func sharpButtonPressed(_ sender: Any) {
+        flatButton.backgroundColor = customLightBlue
+        sharpButton.backgroundColor = customBlue
+        naturalButton.backgroundColor = customLightBlue
+        flatButton.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        sharpButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        naturalButton.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        flatButton.isSelected = false
+        naturalButton.isSelected = false
+        sharpButton.isSelected = true
+        moveNote(i:0)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    var NPVController = NewPageViewController()
+    let segue = "pvc"
     
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "pvc"{
+            NPVController = (segue.destination as? NewPageViewController)!
+        }
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData[component].count;
-    }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[component][row] as String
-    }
-    
-    func trumpet() {
-        trumpCode = trumpFingers[customPicker.selectedRow(inComponent: 1)]
+    @IBAction func mvSl(_ sender: Any) {
+        NPVController.doHide()
+
+        vInstrument.isHidden = true
+        hInstrument.isHidden = true
+        vInstrumentShadow.isHidden = true
+        hInstrumentShadow.isHidden = true
         
-        for (ind,circ) in [leftCircle,midCircle,rightCircle].enumerated() {
-            circ?.layer.borderWidth = 1
-            circ?.layer.masksToBounds = false
-            circ?.layer.borderColor = UIColor.black.cgColor
-            circ?.layer.backgroundColor = UIColor.white.cgColor
-            circ?.layer.cornerRadius = (circ?.frame.height)!/2
-            circ?.clipsToBounds = true
-            
-            if trumpCode[ind] == 1 {
-                circ?.layer.backgroundColor = UIColor.black.cgColor
+        let instr = instruments[picker.selectedRow(inComponent: 0)]
+        var noteList = [String]()
+        
+        if !vInstruments.contains(instr) && !hInstruments.contains(instr){
+            vStaffShadow.isHidden = true
+            chooseInstrument.isHidden = false
+            vStaff.isHidden = true
+            hStaff.isHidden = true
+            hStaffShadow.isHidden = true
+            heading.text = "Music Fingers"
+            return
+        }
+        chooseInstrument.isHidden = true
+        
+        let sliderVal = round(slider.value)
+        var staff = ""
+        var note = ""
+        var key = ""
+        var keyLabel = ""
+        
+        if trebInstruments.contains(instr){
+            staff = "t_"
+            note = tNotes[Int(sliderVal)]
+        } else {
+            staff = "b_"
+            note = bNotes[Int(sliderVal)]
+        }
+        
+        if flatButton.isSelected{
+            key = "b"
+            keyLabel = "♭"
+        } else if sharpButton.isSelected{
+            key = "#"
+            keyLabel = "♯"
+        } else {
+            key = ""
+        }
+        
+        var imgRef = String()
+        var noteDict = pos[note+key]
+        if noteDict![instr] != nil {
+            noteList = noteDict![instr]!
+            imgRef = noteList[ind]
+        }
+        
+        if hInstruments.contains(instr){
+            hInstrument.isHidden = false
+            hInstrumentShadow.isHidden = false
+            vStaffShadow.isHidden = true
+            vStaff.isHidden = true
+            hStaff.isHidden = false
+            hStaffShadow.isHidden = false
+            hStaff.image = UIImage(named:staff+note+key)
+
+
+            if imgRef == "" {
+                hInstrument.image = UIImage(named:"hNoPosition")
+            } else if instr == "Trumpet" || instr == "Euphonium"{
+                hInstrument.image = UIImage(named:noteList[0])
+            } else {
+                hInstrument.image = UIImage(named:instr+noteList[0])
+            }
+        } else {
+            vStaffShadow.isHidden = false
+            vStaff.isHidden = false
+            hStaff.isHidden = true
+            hStaffShadow.isHidden = true
+            vStaff.image = UIImage(named:staff+note+key)
+            vInstrument.isHidden = false
+            vInstrumentShadow.isHidden = false
+
+            if imgRef == "" {
+                vInstrument.image = UIImage(named:"vNoPosition")
+            } else if instr == "Trumpet" || instr == "Euphonium" {
+                vInstrument.image = UIImage(named:noteList[0])
+            } else {
+                vInstrument.image = UIImage(named:instr+noteList[0])
             }
         }
+        
+        heading.text = instr+": "+note+keyLabel
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let instr = pickerData[0][customPicker.selectedRow(inComponent: 0)]
-        let note = pickerData[1][customPicker.selectedRow(inComponent: 1)]
-        nLabel.text = instr + ": " + note
-        nLabel.font = nLabel.font.withSize(30)
+    func moveNote(i:Int){
+        NPVController.doHide()
+        vInstrument.isHidden = true
+        hInstrument.isHidden = true
+        vInstrumentShadow.isHidden = true
+        hInstrumentShadow.isHidden = true
         
-        if instr == "Trumpet" {
-            trumpet()
+        ind = i
+        let instr = instruments[picker.selectedRow(inComponent: 0)]
+        NPVController.allViews = []
+        var noteList = [String]()
+
+        if !vInstruments.contains(instr) && !hInstruments.contains(instr){
+            vStaffShadow.isHidden = true
+            chooseInstrument.isHidden = false
+            vStaff.isHidden = true
+            hStaff.isHidden = true
+            hStaffShadow.isHidden = true
+            heading.text = "Music Fingers"
+            return
+        }
+        chooseInstrument.isHidden = true
+
+        let sliderVal = round(slider.value)
+        var staff = ""
+        var note = ""
+        var key = ""
+        var keyLabel = ""
+        
+        if trebInstruments.contains(instr){
+            staff = "t_"
+            note = tNotes[Int(sliderVal)]
+        } else {
+            staff = "b_"
+            note = bNotes[Int(sliderVal)]
+        }
+
+        if flatButton.isSelected{
+            key = "b"
+            keyLabel = "♭"
+        } else if sharpButton.isSelected{
+            key = "#"
+            keyLabel = "♯"
+        } else {
+            key = ""
         }
         
+        var imgRef = String()
+        var noteDict = pos[note+key]
+        if noteDict![instr] != nil {
+            noteList = noteDict![instr]!
+            imgRef = noteList[ind]
+        }
+        
+        if hInstruments.contains(instr){
+            vStaffShadow.isHidden = true
+            vStaff.isHidden = true
+            hStaff.isHidden = false
+            hStaffShadow.isHidden = false
+            hStaff.image = UIImage(named:staff+note+key)
+            if imgRef == "" {
+                vList = [["instrument":"hNoPosition","direction":"horizontal"]]
+            } else if instr == "Trumpet" || instr == "Euphonium"{
+                vList = [[String:String]]()
+                for index in 0...noteList.count-1 {
+                    vList.append(["instrument":noteList[index],"direction":"horizontal"])
+                }
+            } else {
+                vList = [[String:String]]()
+                for index in 0...noteList.count-1 {
+                    vList.append(["instrument":instr+noteList[index],"direction":"horizontal"])
+                }
+            }
+        } else {
+            vStaffShadow.isHidden = false
+            vStaff.isHidden = false
+            hStaff.isHidden = true
+            hStaffShadow.isHidden = true
+            vStaff.image = UIImage(named:staff+note+key)
+            if imgRef == "" {
+                vList = [["instrument":"vNoPosition","direction":"vertical"]]
+            } else if instr == "Trumpet" || instr == "Euphonium" {
+                vList = [[String:String]]()
+                for index in 0...noteList.count-1 {
+                    vList.append(["instrument":noteList[index],"direction":"vertical"])
+                }
+            } else {
+                vList = [[String:String]]()
+                for index in 0...noteList.count-1 {
+                    vList.append(["instrument":instr+noteList[index],"direction":"vertical"])
+                }
+            }
+        }
+        
+        NPVController.views = vList
+        [NPVController .viewDidLoad()]
+        
+        heading.text = instr+": "+note+keyLabel
     }
-}
+    
 
+
+}

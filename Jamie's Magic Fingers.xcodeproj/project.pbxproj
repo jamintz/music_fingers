@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E8480E922055FD2F00567ACF /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8480E912055FD2F00567ACF /* GoogleMobileAds.framework */; };
+		E888AAF61FCB21DF003AF5B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E888AAF51FCB21DF003AF5B7 /* ViewController.swift */; };
+		E893CD211FDEE26A008B01BB /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E893CD201FDEE26A008B01BB /* TopViewController.swift */; };
+		E8AC48621FDDCE94009280ED /* NewPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC48611FDDCE94009280ED /* NewPageViewController.swift */; };
 		E8C0FE2F1F8C6203006A82E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C0FE2E1F8C6203006A82E0 /* AppDelegate.swift */; };
-		E8C0FE311F8C6203006A82E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C0FE301F8C6203006A82E0 /* ViewController.swift */; };
 		E8C0FE341F8C6203006A82E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8C0FE321F8C6203006A82E0 /* Main.storyboard */; };
-		E8C0FE361F8C6203006A82E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8C0FE351F8C6203006A82E0 /* Assets.xcassets */; };
 		E8C0FE391F8C6203006A82E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8C0FE371F8C6203006A82E0 /* LaunchScreen.storyboard */; };
 		E8C0FE441F8C6203006A82E0 /* jamiegTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C0FE431F8C6203006A82E0 /* jamiegTests.swift */; };
 		E8C0FE4F1F8C6203006A82E0 /* jamiegUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C0FE4E1F8C6203006A82E0 /* jamiegUITests.swift */; };
+		E8DA69F12056089200280284 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8DA69F02056089100280284 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,11 +37,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E8480E8B2055F42800567ACF /* Jamie's Magic Fingers-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Jamie's Magic Fingers-Bridging-Header.h"; sourceTree = "<group>"; };
+		E8480E912055FD2F00567ACF /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		E888AAF51FCB21DF003AF5B7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E893CD201FDEE26A008B01BB /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
+		E8AC48611FDDCE94009280ED /* NewPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPageViewController.swift; sourceTree = "<group>"; };
 		E8C0FE2B1F8C6203006A82E0 /* Jamie's Magic Fingers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jamie's Magic Fingers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C0FE2E1F8C6203006A82E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E8C0FE301F8C6203006A82E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E8C0FE331F8C6203006A82E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E8C0FE351F8C6203006A82E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8C0FE381F8C6203006A82E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8C0FE3A1F8C6203006A82E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8C0FE3F1F8C6203006A82E0 /* Jamie's Magic FingersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Jamie's Magic FingersTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +53,7 @@
 		E8C0FE4A1F8C6203006A82E0 /* Jamie's Magic FingersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Jamie's Magic FingersUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C0FE4E1F8C6203006A82E0 /* jamiegUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jamiegUITests.swift; sourceTree = "<group>"; };
 		E8C0FE501F8C6203006A82E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8DA69F02056089100280284 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8480E922055FD2F00567ACF /* GoogleMobileAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +85,7 @@
 		E8C0FE221F8C6203006A82E0 = {
 			isa = PBXGroup;
 			children = (
+				E8480E912055FD2F00567ACF /* GoogleMobileAds.framework */,
 				E8C0FE2D1F8C6203006A82E0 /* jamieg */,
 				E8C0FE421F8C6203006A82E0 /* jamiegTests */,
 				E8C0FE4D1F8C6203006A82E0 /* jamiegUITests */,
@@ -97,12 +106,15 @@
 		E8C0FE2D1F8C6203006A82E0 /* jamieg */ = {
 			isa = PBXGroup;
 			children = (
+				E8DA69F02056089100280284 /* Assets.xcassets */,
 				E8C0FE2E1F8C6203006A82E0 /* AppDelegate.swift */,
-				E8C0FE301F8C6203006A82E0 /* ViewController.swift */,
 				E8C0FE321F8C6203006A82E0 /* Main.storyboard */,
-				E8C0FE351F8C6203006A82E0 /* Assets.xcassets */,
+				E893CD201FDEE26A008B01BB /* TopViewController.swift */,
+				E8AC48611FDDCE94009280ED /* NewPageViewController.swift */,
+				E888AAF51FCB21DF003AF5B7 /* ViewController.swift */,
 				E8C0FE371F8C6203006A82E0 /* LaunchScreen.storyboard */,
 				E8C0FE3A1F8C6203006A82E0 /* Info.plist */,
+				E8480E8B2055F42800567ACF /* Jamie's Magic Fingers-Bridging-Header.h */,
 			);
 			path = jamieg;
 			sourceTree = "<group>";
@@ -193,6 +205,7 @@
 				TargetAttributes = {
 					E8C0FE2A1F8C6203006A82E0 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					E8C0FE3E1F8C6203006A82E0 = {
@@ -233,7 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8C0FE391F8C6203006A82E0 /* LaunchScreen.storyboard in Resources */,
-				E8C0FE361F8C6203006A82E0 /* Assets.xcassets in Resources */,
+				E8DA69F12056089200280284 /* Assets.xcassets in Resources */,
 				E8C0FE341F8C6203006A82E0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,8 +272,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8C0FE311F8C6203006A82E0 /* ViewController.swift in Sources */,
+				E893CD211FDEE26A008B01BB /* TopViewController.swift in Sources */,
+				E888AAF61FCB21DF003AF5B7 /* ViewController.swift in Sources */,
 				E8C0FE2F1F8C6203006A82E0 /* AppDelegate.swift in Sources */,
+				E8AC48621FDDCE94009280ED /* NewPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,12 +441,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L6NQ9FUNEA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = jamieg/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jm.jamies-magic-fingers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "jamieg/Jamie's Magic Fingers-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -441,12 +463,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L6NQ9FUNEA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = jamieg/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jm.jamies-magic-fingers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "jamieg/Jamie's Magic Fingers-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
