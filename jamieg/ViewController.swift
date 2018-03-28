@@ -138,13 +138,22 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         adView.rootViewController = self
         adView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         adView.load(GADRequest())
-        
+                
         picker.delegate = self
         picker.dataSource = self
         
@@ -192,98 +201,97 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         vStaff.isHidden = true
         hStaff.isHidden = true
         
-        minMax = ["Alto Sax":["Minimum":20,"Maximum":42],"Baritone Sax":["Minimum":19,"Maximum":42],"Clarinet":["Minimum":16,"Maximum":38],"Euphonium":["Minimum":7,"Maximum":27],"Flute":["Minimum":22,"Maximum":42],"Horn":["Minimum":14,"Maximum":35],"Tenor Sax":["Minimum":20,"Maximum":42],"Trombone":["Minimum":9,"Maximum":27],"Trumpet":["Minimum":18,"Maximum":35],"Recorder":["Minimum":21,"Maximum":32],"Bassoon":["Minimum":5,"Maximum":29]]
+        minMax = ["Alto Sax":["Minimum":20,"Maximum":42],"Baritone Sax":["Minimum":19,"Maximum":42],"Clarinet":["Minimum":16,"Maximum":38],"Euphonium":["Minimum":7,"Maximum":27],"Flute":["Minimum":22,"Maximum":42],"Horn":["Minimum":14,"Maximum":35],"Tenor Sax":["Minimum":20,"Maximum":42],"Trombone":["Minimum":9,"Maximum":27],"Trumpet":["Minimum":18,"Maximum":35],"Recorder":["Minimum":21,"Maximum":32],"Bassoon":["Minimum":5,"Maximum":29],"Tuba":["Minimum":1,"Maximum":27],"Oboe":["Minimum":19,"Maximum":38]]
         
-        instruments = ["Instruments","Alto Sax","Baritone Sax","Bassoon","Clarinet","Euphonium","Flute","Horn","Recorder","Tenor Sax","Trombone","Trumpet"]
-
-        hInstruments = ["Trombone","Flute","Trumpet","Euphonium","Horn"]
-        vInstruments = ["Clarinet","Alto Sax","Tenor Sax","Baritone Sax","Recorder","Bassoon"]
+        instruments = ["Instruments","Flute","Oboe","Bassoon","Clarinet","Alto Sax","Tenor Sax","Baritone Sax","Trumpet","Horn","Trombone","Euphonium","Tuba","Recorder"]
+        hInstruments = ["Trombone","Flute","Trumpet","Euphonium","Horn","Tuba"]
+        vInstruments = ["Clarinet","Alto Sax","Tenor Sax","Baritone Sax","Recorder","Bassoon","Oboe"]
         
-        trebInstruments = ["Trumpet","Flute","Clarinet","Alto Sax","Tenor Sax","Baritone Sax","Horn","Recorder"]
-        bassInstruments = ["Trombone","Euphonium","Bassoon"]
+        trebInstruments = ["Trumpet","Flute","Clarinet","Alto Sax","Tenor Sax","Baritone Sax","Horn","Recorder","Oboe"]
+        bassInstruments = ["Trombone","Euphonium","Bassoon","Tuba"]
         
 
         pos = [
             "C1":[:],
-            "D1":[:],
-            "E1":[:],
-            "F1":[:],
-            "G1":[:],
-            "A1":[:],
-            "B1":["Bassoon":["1"]],
-            "C2":["Euphonium":["23"],"Bassoon":["2"]],
-            "D2":["Euphonium":["15"],"Bassoon":["4"]],
-            "E2":["Trombone":["7"],"Euphonium":["13","20"],"Bassoon":["6"]],
-            "F2":["Trombone":["6"],"Euphonium":["11","18"],"Bassoon":["7"]],
-            "G2":["Trombone":["4"],"Euphonium":["17","10"],"Bassoon":["9"]],
-            "A2":["Trombone":["2"],"Euphonium":["9"],"Bassoon":["11"]],
-            "B2":["Trombone":["7"],"Euphonium":["20","13"],"Bassoon":["13"]],
-            "C3":["Trombone":["6"],"Euphonium":["11","18"],"Horn":["0"],"Bassoon":["14"]],
-            "D3":["Trombone":["4"],"Euphonium":["17","10"],"Horn":["2"],"Bassoon":["16"]],
-            "E3":["Trombone":["2","7"],"Euphonium":["9"],"Horn":["4"],"Clarinet":["1","2","3"],"Bassoon":["18"]],
-            "F3":["Trombone":["1","6"],"Euphonium":["8"],"Horn":["5"],"Clarinet":["4","5"],"Bassoon":["19"]],
-            "G3":["Trombone":["4"],"Trumpet":["5"],"Euphonium":["18","10"],"Horn":["7"],"Clarinet":["7"],"Bassoon":["21"]],
-            "A3":["Trombone":["2","6"],"Trumpet":["4"],"Euphonium":["9"],"Baritone Sax":["0"],"Horn":["9"],"Clarinet":["11"],"Bassoon":["23"]],
-            "B3":["Trombone":["4","7"],"Trumpet":["2"],"Euphonium":["17"],"Tenor Sax":["2"],"Alto Sax":["2"],"Baritone Sax":["2"],"Horn":["11"],"Clarinet":["13","14"],"Bassoon":["25"]],
-            "C4":["Trombone":["3","6"],"Trumpet":["0"],"Euphonium":["16","18"],"Flute":["0"],"Tenor Sax":["3"],"Alto Sax":["3"],"Baritone Sax":["3"],"Horn":["12"],"Clarinet":["15"],"Recorder":["0"],"Bassoon":["26"]],
-            "D4":["Trombone":["1","4","7"],"Trumpet":["5"],"Euphonium":["8","17"],"Flute":["2"],"Tenor Sax":["5"],"Alto Sax":["5"],"Baritone Sax":["5"],"Horn":["14"],"Clarinet":["17"],"Recorder":["2"],"Bassoon":["28"]],
-            "E4":["Trombone":["2","5","7"],"Trumpet":["4"],"Euphonium":["9"],"Flute":["4"],"Tenor Sax":["7"],"Alto Sax":["7"],"Baritone Sax":["7"],"Horn":["16"],"Clarinet":["21"],"Recorder":["4"],"Bassoon":["30"]],
-            "F4":["Trombone":["1","4","6"],"Trumpet":["1"],"Euphonium":["8"],"Flute":["5"],"Tenor Sax":["8"],"Alto Sax":["8"],"Baritone Sax":["8"],"Horn":["17"],"Clarinet":["22"],"Recorder":["5"],"Bassoon":["31"]],
-            "G4":["Trombone":["2","4","6"],"Trumpet":["0"],"Euphonium":["17","10"],"Flute":["7"],"Tenor Sax":["10"],"Alto Sax":["10"],"Baritone Sax":["10"],"Horn":["19"],"Clarinet":["25"],"Recorder":["7"],"Bassoon":["33"]],
-            "A4":["Trombone":["2","4","6"],"Trumpet":["4"],"Euphonium":["9"],"Flute":["9"],"Tenor Sax":["12"],"Alto Sax":["12"],"Baritone Sax":["12"],"Horn":["21"],"Clarinet":["27","28","29"],"Recorder":["9"],"Bassoon":["35"]],
-            "B4":["Trombone":["2","4","6"],"Trumpet":["2"],"Euphonium":["9","17"],"Flute":["11"],"Tenor Sax":["14"],"Alto Sax":["14"],"Baritone Sax":["14"],"Horn":["23"],"Clarinet":["33","34","35"],"Recorder":["11"],"Bassoon":["37"]],
-            "C5":["Trumpet":["0"],"Flute":["12"],"Tenor Sax":["15"],"Alto Sax":["15"],"Baritone Sax":["15"],"Horn":["24"],"Clarinet":["36","37"],"Recorder":["12"],"Bassoon":["38"]],
-            "D5":["Trumpet":["1"],"Flute":["14"],"Tenor Sax":["17"],"Alto Sax":["17"],"Baritone Sax":["17"],"Horn":["26"],"Clarinet":["41"],"Recorder":["14"],"Bassoon":["40"]],
-            "E5":["Trumpet":["0"],"Flute":["16"],"Tenor Sax":["19"],"Alto Sax":["19"],"Baritone Sax":["19"],"Horn":["28"],"Clarinet":["43"],"Recorder":["16"]],
-            "F5":["Trumpet":["1"],"Flute":["17"],"Tenor Sax":["20"],"Alto Sax":["20"],"Baritone Sax":["20"],"Horn":["29"],"Clarinet":["44"],"Recorder":["17"]],
-            "G5":["Trumpet":["0"],"Flute":["19"],"Tenor Sax":["22"],"Alto Sax":["22"],"Baritone Sax":["22"],"Horn":["31"],"Clarinet":["47"],"Recorder":["19"]],
-            "A5":["Trumpet":["4"],"Flute":["21"],"Tenor Sax":["24"],"Alto Sax":["24"],"Baritone Sax":["24"],"Horn":["33"],"Clarinet":["49"]],
-            "B5":["Trumpet":["2"],"Flute":["23"],"Tenor Sax":["26"],"Alto Sax":["26"],"Baritone Sax":["26"],"Horn":["35"],"Clarinet":["53"]],
-            "C6":["Trumpet":["0"],"Flute":["24"],"Tenor Sax":["27"],"Alto Sax":["27"],"Baritone Sax":["27"],"Horn":["36"],"Clarinet":["54"]],
-            "D6":["Flute":["26"],"Tenor Sax":["29"],"Alto Sax":["29"],"Baritone Sax":["29"],"Clarinet":["58"]],
-            "E6":["Flute":["28"],"Tenor Sax":["31"],"Alto Sax":["31"],"Baritone Sax":["31"],"Clarinet":["59"]],
-            "F6":["Flute":["29"],"Tenor Sax":["32"],"Alto Sax":["32"],"Baritone Sax":["32"],"Clarinet":["60","61"]],
+            "D1":["Tuba":["15","9"]],
+            "E1":["Tuba":["13","20"]],
+            "F1":["Tuba":["11","18"]],
+            "G1":["Tuba":["17","10"]],
+            "A1":["Tuba":["15"]],
+            "B1":["Bassoon":["1"],"Tuba":["13","20"]],
+            "C2":["Euphonium":["23"],"Bassoon":["2"],"Tuba":["11","18"]],
+            "D2":["Euphonium":["15"],"Bassoon":["4"],"Tuba":["17","10"]],
+            "E2":["Trombone":["7"],"Euphonium":["13","20"],"Bassoon":["6"],"Tuba":["9"]],
+            "F2":["Trombone":["6"],"Euphonium":["11","18"],"Bassoon":["7"],"Tuba":["8","18"]],
+            "G2":["Trombone":["4"],"Euphonium":["17","10"],"Bassoon":["9"],"Tuba":["17","10"]],
+            "A2":["Trombone":["2"],"Euphonium":["9"],"Bassoon":["11"],"Tuba":["9"]],
+            "B2":["Trombone":["7"],"Euphonium":["20","13"],"Bassoon":["13"],"Tuba":["17","10"]],
+            "C3":["Trombone":["6"],"Euphonium":["11","18"],"Horn":["0"],"Bassoon":["14"],"Tuba":["16","18"]],
+            "D3":["Trombone":["4"],"Euphonium":["17","10"],"Horn":["2"],"Bassoon":["16"],"Tuba":["8","17"]],
+            "E3":["Trombone":["2","7"],"Euphonium":["9"],"Horn":["4"],"Clarinet":["1","2","3"],"Bassoon":["18"],"Tuba":["9","12"]],
+            "F3":["Trombone":["1","6"],"Euphonium":["8"],"Horn":["5"],"Clarinet":["4","5"],"Bassoon":["19"],"Tuba":["8","17"]],
+            "G3":["Trombone":["4"],"Trumpet":["5"],"Euphonium":["18","10"],"Horn":["7"],"Clarinet":["7"],"Bassoon":["21"],"Tuba":["17","10"]],
+            "A3":["Trombone":["2","6"],"Trumpet":["4"],"Euphonium":["9"],"Baritone Sax":["0"],"Horn":["9"],"Clarinet":["11"],"Bassoon":["23"],"Tuba":["9","17","18"]],
+            "B3":["Trombone":["4","7"],"Trumpet":["2"],"Euphonium":["17"],"Tenor Sax":["2"],"Alto Sax":["2"],"Baritone Sax":["2"],"Horn":["11"],"Clarinet":["13","14"],"Bassoon":["25"],"Tuba":["17","10","13"],"Oboe":["3"]],
+            "C4":["Trombone":["3","6"],"Trumpet":["0"],"Euphonium":["16","18"],"Flute":["0"],"Tenor Sax":["3"],"Alto Sax":["3"],"Baritone Sax":["3"],"Horn":["12"],"Clarinet":["15"],"Recorder":["0"],"Bassoon":["26"],"Tuba":["16","8","18"],"Oboe":["4","5"]],
+            "D4":["Trombone":["1","4","7"],"Trumpet":["5"],"Euphonium":["8","17"],"Flute":["2"],"Tenor Sax":["5"],"Alto Sax":["5"],"Baritone Sax":["5"],"Horn":["14"],"Clarinet":["17"],"Recorder":["2"],"Bassoon":["28"],"Tuba":["8","17","20"],"Oboe":["7"]],
+            "E4":["Trombone":["2","5","7"],"Trumpet":["4"],"Euphonium":["9"],"Flute":["4"],"Tenor Sax":["7"],"Alto Sax":["7"],"Baritone Sax":["7"],"Horn":["16"],"Clarinet":["21"],"Recorder":["4"],"Bassoon":["30"],"Tuba":["9","12"],"Oboe":["10"]],
+            "F4":["Trombone":["1","4","6"],"Trumpet":["1"],"Euphonium":["8"],"Flute":["5"],"Tenor Sax":["8"],"Alto Sax":["8"],"Baritone Sax":["8"],"Horn":["17"],"Clarinet":["22"],"Recorder":["5"],"Bassoon":["31"],"Tuba":["8","17"],"Oboe":["11","12"]],
+            "G4":["Trombone":["2","4","6"],"Trumpet":["0"],"Euphonium":["17","10"],"Flute":["7"],"Tenor Sax":["10"],"Alto Sax":["10"],"Baritone Sax":["10"],"Horn":["19"],"Clarinet":["25"],"Recorder":["7"],"Bassoon":["33"],"Tuba":["17","9"],"Oboe":["14"]],
+            "A4":["Trombone":["2","4","6"],"Trumpet":["4"],"Euphonium":["9"],"Flute":["9"],"Tenor Sax":["12"],"Alto Sax":["12"],"Baritone Sax":["12"],"Horn":["21"],"Clarinet":["27","28","29"],"Recorder":["9"],"Bassoon":["35"],"Tuba":["9"],"Oboe":["17"]],
+            "B4":["Trombone":["2","4","6"],"Trumpet":["2"],"Euphonium":["9","17"],"Flute":["11"],"Tenor Sax":["14"],"Alto Sax":["14"],"Baritone Sax":["14"],"Horn":["23"],"Clarinet":["33","34","35"],"Recorder":["11"],"Bassoon":["37"],"Oboe":["19"]],
+            "C5":["Trumpet":["0"],"Flute":["12"],"Tenor Sax":["15"],"Alto Sax":["15"],"Baritone Sax":["15"],"Horn":["24"],"Clarinet":["36","37"],"Recorder":["12"],"Bassoon":["38"],"Oboe":["20"]],
+            "D5":["Trumpet":["1"],"Flute":["14"],"Tenor Sax":["17"],"Alto Sax":["17"],"Baritone Sax":["17"],"Horn":["26"],"Clarinet":["41"],"Recorder":["14"],"Bassoon":["40"],"Oboe":["22"]],
+            "E5":["Trumpet":["0"],"Flute":["16"],"Tenor Sax":["19"],"Alto Sax":["19"],"Baritone Sax":["19"],"Horn":["28"],"Clarinet":["43"],"Recorder":["16"],"Oboe":["25"]],
+            "F5":["Trumpet":["1"],"Flute":["17"],"Tenor Sax":["20"],"Alto Sax":["20"],"Baritone Sax":["20"],"Horn":["29"],"Clarinet":["44"],"Recorder":["17"],"Oboe":["26","27"]],
+            "G5":["Trumpet":["0"],"Flute":["19"],"Tenor Sax":["22"],"Alto Sax":["22"],"Baritone Sax":["22"],"Horn":["31"],"Clarinet":["47"],"Recorder":["19"],"Oboe":["29"]],
+            "A5":["Trumpet":["4"],"Flute":["21"],"Tenor Sax":["24"],"Alto Sax":["24"],"Baritone Sax":["24"],"Horn":["33"],"Clarinet":["49"],"Oboe":["32","33"]],
+            "B5":["Trumpet":["2"],"Flute":["23"],"Tenor Sax":["26"],"Alto Sax":["26"],"Baritone Sax":["26"],"Horn":["35"],"Clarinet":["53"],"Oboe":["35"]],
+            "C6":["Trumpet":["0"],"Flute":["24"],"Tenor Sax":["27"],"Alto Sax":["27"],"Baritone Sax":["27"],"Horn":["36"],"Clarinet":["54"],"Oboe":["36"]],
+            "D6":["Flute":["26"],"Tenor Sax":["29"],"Alto Sax":["29"],"Baritone Sax":["29"],"Clarinet":["58"],"Oboe":["39","39"]],
+            "E6":["Flute":["28"],"Tenor Sax":["31"],"Alto Sax":["31"],"Baritone Sax":["31"],"Clarinet":["59"],"Oboe":["42","43"]],
+            "F6":["Flute":["29"],"Tenor Sax":["32"],"Alto Sax":["32"],"Baritone Sax":["32"],"Clarinet":["60","61"],"Oboe":["44","45"]],
             "G6":["Flute":["31"],"Tenor Sax":["34"],"Alto Sax":["34"],"Baritone Sax":["34"]],
             "A6":["Flute":["33"],"Tenor Sax":["36"],"Alto Sax":["36"],"Baritone Sax":["36"]],
             "B6":["Flute":["35"],"Tenor Sax":["38"],"Alto Sax":["38"],"Baritone Sax":["38"]],
             "C7":["Flute":["36"],"Tenor Sax":["39"],"Alto Sax":["39"],"Baritone Sax":["39"]],
             "C1#":[:],
-            "D1#":[:],
+            "D1#":["Tuba":["21","8"]],
             "E1#":[:],
-            "F1#":[:],
-            "G1#":[:],
-            "A1#":["Bassoon":["0"]],
+            "F1#":["Tuba":["12"]],
+            "G1#":["Tuba":["16"]],
+            "A1#":["Bassoon":["0"],"Tuba":["8"]],
             "B1#":[:],
-            "C2#":["Euphonium":["21"],"Bassoon":["3"]],
-            "D2#":["Euphonium":["21"],"Bassoon":["5"]],
+            "C2#":["Euphonium":["21"],"Bassoon":["3"],"Tuba":["12"]],
+            "D2#":["Euphonium":["21"],"Bassoon":["5"],"Tuba":["16"]],
             "E2#":[:],
-            "F2#":["Trombone":["5"],"Euphonium":["12"],"Bassoon":["8"]],
-            "G2#":["Trombone":["3"],"Euphonium":["16"],"Bassoon":["10"]],
-            "A2#":["Trombone":["1"],"Euphonium":["8"],"Bassoon":["12"]],
+            "F2#":["Trombone":["5"],"Euphonium":["12"],"Bassoon":["8"],"Tuba":["12"]],
+            "G2#":["Trombone":["3"],"Euphonium":["16"],"Bassoon":["10"],"Tuba":["16"]],
+            "A2#":["Trombone":["1"],"Euphonium":["8"],"Bassoon":["12"],"Tuba":["8"]],
             "B2#":[:],
-            "C3#":["Trombone":["5"],"Euphonium":["12"],"Horn":["1"],"Bassoon":["15"]],
-            "D3#":["Trombone":["3"],"Euphonium":["16"],"Horn":["3"],"Bassoon":["17"]],
+            "C3#":["Trombone":["5"],"Euphonium":["12"],"Horn":["1"],"Bassoon":["15"],"Tuba":["9","12"]],
+            "D3#":["Trombone":["3"],"Euphonium":["16"],"Horn":["3"],"Bassoon":["17"],"Tuba":["16","18"]],
             "E3#":[:],
-            "F3#":["Trombone":["5"],"Trumpet":["7"],"Euphonium":["12"],"Horn":["6"],"Clarinet":["6","7","8"],"Bassoon":["20"]],
-            "G3#":["Trombone":["3","7"],"Trumpet":["6"],"Euphonium":["16"],"Horn":["8"],"Clarinet":["10"],"Bassoon":["22"]],
-            "A3#":["Trombone":["1","5"],"Trumpet":["1"],"Euphonium":["8"],"Tenor Sax":["1"],"Alto Sax":["1"],"Baritone Sax":["1"],"Horn":["10"],"Clarinet":["12"],"Bassoon":["24"]],
+            "F3#":["Trombone":["5"],"Trumpet":["7"],"Euphonium":["12"],"Horn":["6"],"Clarinet":["6","7","8"],"Bassoon":["20"],"Tuba":["12","16"]],
+            "G3#":["Trombone":["3","7"],"Trumpet":["6"],"Euphonium":["16"],"Horn":["8"],"Clarinet":["10"],"Bassoon":["22"],"Tuba":["16","8"]],
+            "A3#":["Trombone":["1","5"],"Trumpet":["1"],"Euphonium":["8"],"Tenor Sax":["1"],"Alto Sax":["1"],"Baritone Sax":["1"],"Horn":["10"],"Clarinet":["12"],"Bassoon":["24"],"Tuba":["8","12","16"],"Oboe":["2"]],
             "B3#":[:],
-            "C4#":["Trombone":["2","5"],"Trumpet":["7"],"Euphonium":["9","12"],"Flute":["1"],"Tenor Sax":["4"],"Alto Sax":["4"],"Baritone Sax":["4"],"Horn":["13"],"Clarinet":["16"],"Recorder":["1"],"Bassoon":["27"]],
-            "D4#":["Trombone":["3","6"],"Trumpet":["6"],"Euphonium":["16"],"Flute":["6"],"Tenor Sax":["1"],"Alto Sax":["6"],"Baritone Sax":["6"],"Horn":["15"],"Clarinet":["18","19","20"],"Recorder":["3"],"Bassoon":["29"]],
+            "C4#":["Trombone":["2","5"],"Trumpet":["7"],"Euphonium":["9","12"],"Flute":["1"],"Tenor Sax":["4"],"Alto Sax":["4"],"Baritone Sax":["4"],"Horn":["13"],"Clarinet":["16"],"Recorder":["1"],"Bassoon":["27"],"Tuba":["9","12"],"Oboe":["6"]],
+            "D4#":["Trombone":["3","6"],"Trumpet":["6"],"Euphonium":["16"],"Flute":["6"],"Tenor Sax":["1"],"Alto Sax":["6"],"Baritone Sax":["6"],"Horn":["15"],"Clarinet":["18","19","20"],"Recorder":["3"],"Bassoon":["29"],"Tuba":["16","18"],"Oboe":["8","9"]],
             "E4#":[:],
-            "F4#":["Trombone":["3","5","7"],"Trumpet":["2"],"Euphonium":["12"],"Flute":["3"],"Tenor Sax":["9"],"Alto Sax":["9"],"Baritone Sax":["9"],"Horn":["18"],"Clarinet":["23","24"],"Recorder":["6"],"Bassoon":["32"]],
-            "G4#":["Trombone":["3","5","7"],"Trumpet":["6"],"Euphonium":["16"],"Flute":["8"],"Tenor Sax":["11"],"Alto Sax":["11"],"Baritone Sax":["11"],"Horn":["20"],"Clarinet":["26"],"Recorder":["8"],"Bassoon":["34"]],
-            "A4#":["Trombone":["1","3","5"],"Trumpet":["1"],"Euphonium":["8"],"Flute":["10"],"Tenor Sax":["13"],"Alto Sax":["13"],"Baritone Sax":["13"],"Horn":["22"],"Clarinet":["30","31","32"],"Recorder":["10"],"Bassoon":["36"]],
+            "F4#":["Trombone":["3","5","7"],"Trumpet":["2"],"Euphonium":["12"],"Flute":["3"],"Tenor Sax":["9"],"Alto Sax":["9"],"Baritone Sax":["9"],"Horn":["18"],"Clarinet":["23","24"],"Recorder":["6"],"Bassoon":["32"],"Tuba":["12","16"],"Oboe":["13"]],
+            "G4#":["Trombone":["3","5","7"],"Trumpet":["6"],"Euphonium":["16"],"Flute":["8"],"Tenor Sax":["11"],"Alto Sax":["11"],"Baritone Sax":["11"],"Horn":["20"],"Clarinet":["26"],"Recorder":["8"],"Bassoon":["34"],"Tuba":["16","8","12"],"Oboe":["15","16"]],
+            "A4#":["Trombone":["1","3","5"],"Trumpet":["1"],"Euphonium":["8"],"Flute":["10"],"Tenor Sax":["13"],"Alto Sax":["13"],"Baritone Sax":["13"],"Horn":["22"],"Clarinet":["30","31","32"],"Recorder":["10"],"Bassoon":["36"],"Tuba":["8"],"Oboe":["18"]],
             "B4#":[:],
-            "C5#":["Trumpet":["4"],"Flute":["13"],"Tenor Sax":["16"],"Alto Sax":["16"],"Baritone Sax":["16"],"Horn":["25"],"Clarinet":["38","39","40"],"Recorder":["13"],"Bassoon":["39"]],
-            "D5#":["Trumpet":["2"],"Flute":["15"],"Tenor Sax":["18"],"Alto Sax":["18"],"Baritone Sax":["18"],"Horn":["27"],"Clarinet":["42"],"Recorder":["15"]],
+            "C5#":["Trumpet":["4"],"Flute":["13"],"Tenor Sax":["16"],"Alto Sax":["16"],"Baritone Sax":["16"],"Horn":["25"],"Clarinet":["38","39","40"],"Recorder":["13"],"Bassoon":["39"],"Oboe":["21"]],
+            "D5#":["Trumpet":["2"],"Flute":["15"],"Tenor Sax":["18"],"Alto Sax":["18"],"Baritone Sax":["18"],"Horn":["27"],"Clarinet":["42"],"Recorder":["15"],"Oboe":["23","24"]],
             "E5#":[:],
-            "F5#":["Trumpet":["2"],"Flute":["18"],"Tenor Sax":["21"],"Alto Sax":["21"],"Baritone Sax":["21"],"Horn":["30"],"Clarinet":["45","46"],"Recorder":["18"]],
-            "G5#":["Trumpet":["6"],"Flute":["20"],"Tenor Sax":["23"],"Alto Sax":["23"],"Baritone Sax":["23"],"Horn":["32"],"Clarinet":["48"]],
-            "A5#":["Trumpet":["1"],"Flute":["22"],"Tenor Sax":["25"],"Alto Sax":["25"],"Baritone Sax":["25"],"Horn":["34"],"Clarinet":["50","51","52"]],
+            "F5#":["Trumpet":["2"],"Flute":["18"],"Tenor Sax":["21"],"Alto Sax":["21"],"Baritone Sax":["21"],"Horn":["30"],"Clarinet":["45","46"],"Recorder":["18"],"Oboe":["28"]],
+            "G5#":["Trumpet":["6"],"Flute":["20"],"Tenor Sax":["23"],"Alto Sax":["23"],"Baritone Sax":["23"],"Horn":["32"],"Clarinet":["48"],"Oboe":["30","31"]],
+            "A5#":["Trumpet":["1"],"Flute":["22"],"Tenor Sax":["25"],"Alto Sax":["25"],"Baritone Sax":["25"],"Horn":["34"],"Clarinet":["50","51","52"],"Oboe":["34"]],
             "B5#":[:],
-            "C6#":["Flute":["25"],"Tenor Sax":["28"],"Alto Sax":["28"],"Baritone Sax":["28"],"Clarinet":["55"]],
-            "D6#":["Flute":["27"],"Tenor Sax":["30"],"Alto Sax":["30"],"Baritone Sax":["30"],"Clarinet":["57","58"]],
+            "C6#":["Flute":["25"],"Tenor Sax":["28"],"Alto Sax":["28"],"Baritone Sax":["28"],"Clarinet":["55"],"Oboe":["37","38"]],
+            "D6#":["Flute":["27"],"Tenor Sax":["30"],"Alto Sax":["30"],"Baritone Sax":["30"],"Clarinet":["57","58"],"Oboe":["41"]],
             "E6#":[:],
             "F6#":["Flute":["30"],"Tenor Sax":["33"],"Alto Sax":["33"],"Baritone Sax":["33"]],
             "G6#":["Flute":["32"],"Tenor Sax":["35"],"Alto Sax":["35"],"Baritone Sax":["35"]],
@@ -292,42 +300,42 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             "C7#":[:],
             "C1b":[:],
             "D1b":[:],
-            "E1b":[:],
+            "E1b":["Tuba":["21","8"]],
             "F1b":[:],
-            "G1b":[:],
-            "A1b":[:],
-            "B1b":["Bassoon":["0"]],
+            "G1b":["Tuba":["12"]],
+            "A1b":["Tuba":["16"]],
+            "B1b":["Bassoon":["0"],"Tuba":["8"]],
             "C2b":[:],
-            "D2b":["Euphonium":["21"],"Bassoon":["3"]],
-            "E2b":["Euphonium":["21"],"Bassoon":["5"]],
+            "D2b":["Euphonium":["21"],"Bassoon":["3"],"Tuba":["12"]],
+            "E2b":["Euphonium":["21"],"Bassoon":["5"],"Tuba":["16"]],
             "F2b":[:],
-            "G2b":["Trombone":["5"],"Euphonium":["12"],"Bassoon":["8"]],
-            "A2b":["Trombone":["3"],"Euphonium":["16"],"Bassoon":["10"]],
-            "B2b":["Trombone":["1"],"Euphonium":["8"],"Bassoon":["12"]],
+            "G2b":["Trombone":["5"],"Euphonium":["12"],"Bassoon":["8"],"Tuba":["12"]],
+            "A2b":["Trombone":["3"],"Euphonium":["16"],"Bassoon":["10"],"Tuba":["16"]],
+            "B2b":["Trombone":["1"],"Euphonium":["8"],"Bassoon":["12"],"Tuba":["8"]],
             "C3b":[:],
-            "D3b":["Trombone":["5"],"Euphonium":["12"],"Horn":["1"],"Bassoon":["15"]],
-            "E3b":["Trombone":["3"],"Euphonium":["16"],"Horn":["3"],"Bassoon":["17"]],
+            "D3b":["Trombone":["5"],"Euphonium":["12"],"Horn":["1"],"Bassoon":["15"],"Tuba":["9","12"]],
+            "E3b":["Trombone":["3"],"Euphonium":["16"],"Horn":["3"],"Bassoon":["17"],"Tuba":["16","18"]],
             "F3b":[:],
-            "G3b":["Trombone":["5"],"Trumpet":["7"],"Euphonium":["12"],"Horn":["6"],"Clarinet":["6","7","8"],"Bassoon":["20"]],
-            "A3b":["Trombone":["3","7"],"Trumpet":["6"],"Euphonium":["16"],"Horn":["8"],"Clarinet":["10"],"Bassoon":["22"]],
-            "B3b":["Trombone":["1","5"],"Trumpet":["1"],"Euphonium":["8"],"Tenor Sax":["1"],"Alto Sax":["1"],"Baritone Sax":["1"],"Horn":["10"],"Clarinet":["12"],"Bassoon":["24"]],
+            "G3b":["Trombone":["5"],"Trumpet":["7"],"Euphonium":["12"],"Horn":["6"],"Clarinet":["6","7","8"],"Bassoon":["20"],"Tuba":["12","16"]],
+            "A3b":["Trombone":["3","7"],"Trumpet":["6"],"Euphonium":["16"],"Horn":["8"],"Clarinet":["10"],"Bassoon":["22"],"Tuba":["16","8"]],
+            "B3b":["Trombone":["1","5"],"Trumpet":["1"],"Euphonium":["8"],"Tenor Sax":["1"],"Alto Sax":["1"],"Baritone Sax":["1"],"Horn":["10"],"Clarinet":["12"],"Bassoon":["24"],"Tuba":["8","12","16"],"Oboe":["2"]],
             "C4b":[:],
-            "D4b":["Trombone":["2","5"],"Trumpet":["7"],"Euphonium":["9","12"],"Flute":["1"],"Tenor Sax":["4"],"Alto Sax":["4"],"Baritone Sax":["4"],"Horn":["13"],"Clarinet":["16"],"Recorder":["1"],"Bassoon":["27"]],
-            "E4b":["Trombone":["3","6"],"Trumpet":["6"],"Euphonium":["16"],"Flute":["3"],"Tenor Sax":["6"],"Alto Sax":["6"],"Baritone Sax":["6"],"Horn":["15"],"Clarinet":["18","19","20"],"Recorder":["3"],"Bassoon":["29"]],
+            "D4b":["Trombone":["2","5"],"Trumpet":["7"],"Euphonium":["9","12"],"Flute":["1"],"Tenor Sax":["4"],"Alto Sax":["4"],"Baritone Sax":["4"],"Horn":["13"],"Clarinet":["16"],"Recorder":["1"],"Bassoon":["27"],"Tuba":["9","12"],"Oboe":["6"]],
+            "E4b":["Trombone":["3","6"],"Trumpet":["6"],"Euphonium":["16"],"Flute":["3"],"Tenor Sax":["6"],"Alto Sax":["6"],"Baritone Sax":["6"],"Horn":["15"],"Clarinet":["18","19","20"],"Recorder":["3"],"Bassoon":["29"],"Tuba":["16","18"],"Oboe":["9","8"]],
             "F4b":[:],
-            "G4b":["Trombone":["3","5","7"],"Trumpet":["2"],"Euphonium":["12"],"Flute":["6"],"Tenor Sax":["9"],"Alto Sax":["9"],"Baritone Sax":["9"],"Horn":["18"],"Clarinet":["23","24"],"Recorder":["6"],"Bassoon":["32"]],
-            "A4b":["Trombone":["3","5","7"],"Trumpet":["6"],"Euphonium":["16"],"Flute":["8"],"Tenor Sax":["11"],"Alto Sax":["11"],"Baritone Sax":["11"],"Horn":["20"],"Clarinet":["26"],"Recorder":["8"],"Bassoon":["34"]],
-            "B4b":["Trombone":["1","3","5"],"Trumpet":["1"],"Euphonium":["8"],"Flute":["10"],"Tenor Sax":["13"],"Alto Sax":["13"],"Baritone Sax":["13"],"Horn":["22"],"Clarinet":["30","31","32"],"Recorder":["10"],"Bassoon":["36"]],
+            "G4b":["Trombone":["3","5","7"],"Trumpet":["2"],"Euphonium":["12"],"Flute":["6"],"Tenor Sax":["9"],"Alto Sax":["9"],"Baritone Sax":["9"],"Horn":["18"],"Clarinet":["23","24"],"Recorder":["6"],"Bassoon":["32"],"Tuba":["12","16"],"Oboe":["13"]],
+            "A4b":["Trombone":["3","5","7"],"Trumpet":["6"],"Euphonium":["16"],"Flute":["8"],"Tenor Sax":["11"],"Alto Sax":["11"],"Baritone Sax":["11"],"Horn":["20"],"Clarinet":["26"],"Recorder":["8"],"Bassoon":["34"],"Tuba":["16","8","12"],"Oboe":["16","15"]],
+            "B4b":["Trombone":["1","3","5"],"Trumpet":["1"],"Euphonium":["8"],"Flute":["10"],"Tenor Sax":["13"],"Alto Sax":["13"],"Baritone Sax":["13"],"Horn":["22"],"Clarinet":["30","31","32"],"Recorder":["10"],"Bassoon":["36"],"Tuba":["8"],"Oboe":["18"]],
             "C5b":[:],
-            "D5b":["Trumpet":["4"],"Flute":["13"],"Tenor Sax":["16"],"Alto Sax":["16"],"Baritone Sax":["16"],"Horn":["25"],"Clarinet":["38","39","40"],"Recorder":["13"],"Bassoon":["39"]],
-            "E5b":["Trumpet":["2"],"Flute":["15"],"Tenor Sax":["18"],"Alto Sax":["18"],"Baritone Sax":["18"],"Horn":["27"],"Clarinet":["42"],"Recorder":["15"]],
+            "D5b":["Trumpet":["4"],"Flute":["13"],"Tenor Sax":["16"],"Alto Sax":["16"],"Baritone Sax":["16"],"Horn":["25"],"Clarinet":["38","39","40"],"Recorder":["13"],"Bassoon":["39"],"Oboe":["21"]],
+            "E5b":["Trumpet":["2"],"Flute":["15"],"Tenor Sax":["18"],"Alto Sax":["18"],"Baritone Sax":["18"],"Horn":["27"],"Clarinet":["42"],"Recorder":["15"],"Oboe":["24","23"]],
             "F5b":[:],
-            "G5b":["Trumpet":["2"],"Flute":["18"],"Tenor Sax":["21"],"Alto Sax":["21"],"Baritone Sax":["21"],"Horn":["30"],"Clarinet":["45","46"],"Recorder":["18"]],
-            "A5b":["Trumpet":["6"],"Flute":["20"],"Tenor Sax":["23"],"Alto Sax":["23"],"Baritone Sax":["23"],"Horn":["32"],"Clarinet":["48"]],
-            "B5b":["Trumpet":["1"],"Flute":["22"],"Tenor Sax":["25"],"Alto Sax":["25"],"Baritone Sax":["25"],"Horn":["34"],"Clarinet":["50","51","52"]],
+            "G5b":["Trumpet":["2"],"Flute":["18"],"Tenor Sax":["21"],"Alto Sax":["21"],"Baritone Sax":["21"],"Horn":["30"],"Clarinet":["45","46"],"Recorder":["18"],"Oboe":["28"]],
+            "A5b":["Trumpet":["6"],"Flute":["20"],"Tenor Sax":["23"],"Alto Sax":["23"],"Baritone Sax":["23"],"Horn":["32"],"Clarinet":["48"],"Oboe":["31","30"]],
+            "B5b":["Trumpet":["1"],"Flute":["22"],"Tenor Sax":["25"],"Alto Sax":["25"],"Baritone Sax":["25"],"Horn":["34"],"Clarinet":["50","51","52"],"Oboe":["34"]],
             "C6b":[:],
-            "D6b":["Flute":["25"],"Tenor Sax":["28"],"Alto Sax":["28"],"Baritone Sax":["28"],"Clarinet":["55"]],
-            "E6b":["Flute":["27"],"Tenor Sax":["30"],"Alto Sax":["30"],"Baritone Sax":["30"],"Clarinet":["57","58"]],
+            "D6b":["Flute":["25"],"Tenor Sax":["28"],"Alto Sax":["28"],"Baritone Sax":["28"],"Clarinet":["55"],"Oboe":["38","37"]],
+            "E6b":["Flute":["27"],"Tenor Sax":["30"],"Alto Sax":["30"],"Baritone Sax":["30"],"Clarinet":["57","58"],"Oboe":["41"]],
             "F6b":[:],
             "G6b":["Flute":["30"],"Tenor Sax":["33"],"Alto Sax":["33"],"Baritone Sax":["33"]],
             "A6b":["Flute":["32"],"Tenor Sax":["35"],"Alto Sax":["35"],"Baritone Sax":["35"]],
@@ -360,6 +368,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             moveNote(i:0)
             return
         }
+
         var min = Float(minMax[instr]!["Minimum"]!)
         var max = Float(minMax[instr]!["Maximum"]!)
         
@@ -449,7 +458,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             vStaff.isHidden = true
             hStaff.isHidden = true
             hStaffShadow.isHidden = true
-            heading.text = "Music Fingers"
+            heading.text = "NoteChart"
             return
         }
         chooseInstrument.isHidden = true
@@ -497,7 +506,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
             if imgRef == "" {
                 hInstrument.image = UIImage(named:"hNoPosition")
-            } else if instr == "Trumpet" || instr == "Euphonium"{
+            } else if instr == "Trumpet" || instr == "Euphonium" || instr == "Tuba" {
                 hInstrument.image = UIImage(named:noteList[0])
             } else {
                 hInstrument.image = UIImage(named:instr+noteList[0])
@@ -513,7 +522,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
             if imgRef == "" {
                 vInstrument.image = UIImage(named:"vNoPosition")
-            } else if instr == "Trumpet" || instr == "Euphonium" {
+            } else if instr == "Trumpet" || instr == "Euphonium" || instr == "Tuba" {
                 vInstrument.image = UIImage(named:noteList[0])
             } else {
                 vInstrument.image = UIImage(named:instr+noteList[0])
@@ -541,7 +550,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             vStaff.isHidden = true
             hStaff.isHidden = true
             hStaffShadow.isHidden = true
-            heading.text = "Music Fingers"
+            heading.text = "NoteChart"
             return
         }
         chooseInstrument.isHidden = true
@@ -585,7 +594,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             hStaff.image = UIImage(named:staff+note+key)
             if imgRef == "" {
                 vList = [["instrument":"hNoPosition","direction":"horizontal"]]
-            } else if instr == "Trumpet" || instr == "Euphonium"{
+            } else if instr == "Trumpet" || instr == "Euphonium" || instr == "Tuba" {
                 vList = [[String:String]]()
                 for index in 0...noteList.count-1 {
                     vList.append(["instrument":noteList[index],"direction":"horizontal"])
@@ -604,7 +613,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             vStaff.image = UIImage(named:staff+note+key)
             if imgRef == "" {
                 vList = [["instrument":"vNoPosition","direction":"vertical"]]
-            } else if instr == "Trumpet" || instr == "Euphonium" {
+            } else if instr == "Trumpet" || instr == "Euphonium" || instr == "Tuba" {
                 vList = [[String:String]]()
                 for index in 0...noteList.count-1 {
                     vList.append(["instrument":noteList[index],"direction":"vertical"])
