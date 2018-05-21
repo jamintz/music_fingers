@@ -1,42 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JPn-9i-oLa">
-    <device id="retina5_5" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JPn-9i-oLa">
+    <device id="ipad12_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Helvetica.ttc">
-            <string>Helvetica</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="kYq-Do-RXX">
             <objects>
                 <viewController storyboardIdentifier="full" id="Kba-yo-1yl" customClass="ViewController" customModule="Jamie_s_Magic_Fingers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cf6-hJ-Jgn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1cp-Md-8yQ">
-                                <rect key="frame" x="0.0" y="64.000000000000028" width="414" height="405.66666666666674"/>
+                                <rect key="frame" x="0.0" y="64" width="1024" height="794.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZn-ie-MBa">
-                                <rect key="frame" x="0.0" y="469.66666666666674" width="414" height="266.33333333333326"/>
+                                <rect key="frame" x="0.0" y="858.5" width="1024" height="507.5"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="hzh-Yu-eSv">
-                                <rect key="frame" x="0.0" y="69" width="414" height="42"/>
+                                <rect key="frame" x="0.0" y="69" width="1024" height="100"/>
                                 <attributedString key="attributedText">
                                     <fragment content="NoteChart">
                                         <attributes>
-                                            <color key="NSColor" red="0.92094022035598755" green="0.78476905822753906" blue="0.41557946801185608" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="NSColor" red="0.96864068510000001" green="0.96861994269999996" blue="0.96862399580000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <font key="NSFont" size="36" name="Roboto-Medium"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
@@ -45,32 +40,32 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9C1-gE-hr5">
-                                <rect key="frame" x="123.33333333333333" y="238" width="167.33333333333337" height="226.33333333333337"/>
+                                <rect key="frame" x="365.5" y="459" width="293.5" height="394"/>
                                 <color key="backgroundColor" red="0.90909522769999995" green="0.62015360590000002" blue="0.24690401549999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="t_C4" translatesAutoresizingMaskIntoConstraints="NO" id="ONT-XN-CdK">
-                                <rect key="frame" x="118.33333333333333" y="233" width="177.33333333333337" height="236.33333333333337"/>
+                                <rect key="frame" x="360.5" y="454" width="303.5" height="404"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ONT-XN-CdK" secondAttribute="height" multiplier="3:4" id="8le-Op-700"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YhL-wb-GnM">
-                                <rect key="frame" x="268.33333333333331" y="126.00000000000003" width="99.333333333333314" height="318.66666666666674"/>
+                                <rect key="frame" x="656.5" y="184" width="260" height="803"/>
                                 <color key="backgroundColor" red="0.90909522769999995" green="0.62015360590000002" blue="0.24690401549999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clarinet1" translatesAutoresizingMaskIntoConstraints="NO" id="E2j-go-2un">
-                                <rect key="frame" x="262.66666666666669" y="121.00000000000003" width="109.33333333333331" height="328.66666666666674"/>
+                                <rect key="frame" x="650.5" y="179" width="270.5" height="813"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="E2j-go-2un" secondAttribute="height" multiplier="1:3" id="F20-Ep-NZb"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQ6-Yx-SRj">
-                                <rect key="frame" x="46.333333333333343" y="126" width="321.33333333333326" height="100.33333333333331"/>
+                                <rect key="frame" x="107.5" y="184" width="809" height="263"/>
                                 <color key="backgroundColor" red="0.90909522769999995" green="0.62015360590000002" blue="0.24690401549999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Trombone1" translatesAutoresizingMaskIntoConstraints="NO" id="sAj-6V-Do4">
-                                <rect key="frame" x="41.333333333333343" y="121" width="331.33333333333326" height="110.33333333333331"/>
+                                <rect key="frame" x="102.5" y="179" width="819" height="273"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="sAj-6V-Do4" secondAttribute="height" multiplier="3:1" id="dP1-Ux-PO9"/>
                                 </constraints>
@@ -81,7 +76,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="724-vH-nQG">
-                                <rect key="frame" x="18.666666666666671" y="499.66666666666674" width="169.66666666666663" height="31"/>
+                                <rect key="frame" x="49" y="888.5" width="414" height="145.5"/>
                                 <color key="backgroundColor" red="0.58124297857284546" green="0.8978918194770813" blue="0.9019618034362793" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <action selector="mvSl:" destination="Kba-yo-1yl" eventType="touchDragInside" id="rda-og-Ncj"/>
@@ -89,19 +84,19 @@
                                 </connections>
                             </slider>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4uf-40-pS7">
-                                <rect key="frame" x="35" y="159.33333333333337" width="187" height="252.66666666666663"/>
+                                <rect key="frame" x="35" y="266" width="478" height="640.5"/>
                                 <color key="backgroundColor" red="0.90909522769999995" green="0.62015360590000002" blue="0.24690401549999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="b_C4" translatesAutoresizingMaskIntoConstraints="NO" id="LBE-kN-Vg2">
-                                <rect key="frame" x="30" y="154.33333333333334" width="197" height="262.66666666666663"/>
+                                <rect key="frame" x="30" y="261" width="488" height="650.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5Ou-UL-e6K">
-                                <rect key="frame" x="0.0" y="278" width="414" height="84"/>
+                                <rect key="frame" x="0.0" y="562.5" width="1024" height="19"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Choose an instrument to get started!">
                                         <attributes>
-                                            <color key="NSColor" red="0.91702252626419067" green="0.78084433078765869" blue="0.41558092832565308" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" size="36" name="Roboto-Medium"/>
+                                            <color key="NSColor" red="0.96864068510000001" green="0.96861994269999996" blue="0.96862399580000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <font key="NSFont" size="16" name="Roboto-Medium"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -109,13 +104,13 @@
                                 <color key="highlightedColor" red="0.91702252626419067" green="0.78084433078765869" blue="0.41558092832565308" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y2M-SO-Kvu">
-                                <rect key="frame" x="-10" y="496.66666666666674" width="434" height="36"/>
+                                <rect key="frame" x="-10" y="885.5" width="1044" height="150.5"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9xq-2R-gAn">
-                                <rect key="frame" x="265.66666666666669" y="499.66666666666674" width="90" height="30"/>
+                                <rect key="frame" x="723" y="888.5" width="90" height="144.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a5D-fk-Eei">
-                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="144.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="22"/>
                                         <color key="tintColor" red="0.13134568929672241" green="0.20697718858718872" blue="0.50590956211090088" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="♭"/>
@@ -124,7 +119,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lqz-1H-bWw">
-                                        <rect key="frame" x="30" y="0.0" width="30" height="30"/>
+                                        <rect key="frame" x="30" y="0.0" width="30" height="144.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="22"/>
                                         <color key="tintColor" red="0.13134568930000001" green="0.2069771886" blue="0.50590956210000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="♮">
@@ -135,7 +130,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvp-FK-wDf">
-                                        <rect key="frame" x="60" y="0.0" width="30" height="30"/>
+                                        <rect key="frame" x="60" y="0.0" width="30" height="144.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="22"/>
                                         <color key="tintColor" red="0.13134568930000001" green="0.2069771886" blue="0.50590956210000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="♯"/>
@@ -147,19 +142,16 @@
                                 <color key="tintColor" red="0.58124297859999996" green="0.89789181949999997" blue="0.90196180339999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </stackView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="upb-m8-I8d">
-                                <rect key="frame" x="0.0" y="111.00000000000003" width="414" height="388.66666666666674"/>
+                                <rect key="frame" x="0.0" y="169" width="1024" height="719.5"/>
                                 <connections>
                                     <segue destination="jwH-zQ-uvC" kind="embed" identifier="pvc" id="fgp-5M-Vkd"/>
                                 </connections>
                             </containerView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m4n-IO-1CF">
-                                <rect key="frame" x="0.0" y="539.66666666666663" width="414" height="146.33333333333337"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="RDX-yz-aBV"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="1043" width="1024" height="273"/>
                             </pickerView>
                             <view contentMode="scaleToFill" verticalHuggingPriority="50" translatesAutoresizingMaskIntoConstraints="NO" id="F9S-ah-lIl" customClass="GADBannerView">
-                                <rect key="frame" x="47" y="686" width="320" height="50"/>
+                                <rect key="frame" x="352" y="1316" width="320" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="WJm-Ud-nov"/>
@@ -168,10 +160,11 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U5h-pa-0EK">
-                                <rect key="frame" x="382.66666666666669" y="80" width="21.333333333333314" height="21"/>
+                                <rect key="frame" x="963.5" y="94.5" width="50.5" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="U5h-pa-0EK" secondAttribute="height" multiplier="1:1" id="thq-j3-Sjh"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" image="info"/>
                                 <connections>
                                     <segue destination="gqx-2G-DaW" kind="show" id="pZ7-HK-Nax"/>
@@ -233,7 +226,7 @@
                             <constraint firstItem="724-vH-nQG" firstAttribute="centerX" secondItem="cf6-hJ-Jgn" secondAttribute="centerX" multiplier="0.5" id="fFI-ob-NPS"/>
                             <constraint firstItem="4aL-tb-ks0" firstAttribute="bottom" secondItem="fZn-ie-MBa" secondAttribute="bottom" id="fru-u8-d43"/>
                             <constraint firstItem="1cp-Md-8yQ" firstAttribute="leading" secondItem="4aL-tb-ks0" secondAttribute="leading" id="gk7-F2-Qag"/>
-                            <constraint firstItem="9xq-2R-gAn" firstAttribute="top" secondItem="E2j-go-2un" secondAttribute="bottom" constant="50" id="gox-GH-rcw"/>
+                            <constraint firstItem="9xq-2R-gAn" firstAttribute="top" relation="lessThanOrEqual" secondItem="E2j-go-2un" secondAttribute="bottom" constant="50" id="gox-GH-rcw"/>
                             <constraint firstItem="YhL-wb-GnM" firstAttribute="height" secondItem="E2j-go-2un" secondAttribute="height" constant="-10" id="iAr-3o-ESz"/>
                             <constraint firstItem="y2M-SO-Kvu" firstAttribute="centerY" secondItem="9xq-2R-gAn" secondAttribute="centerY" id="jiS-iO-4F8"/>
                             <constraint firstItem="LBE-kN-Vg2" firstAttribute="centerY" secondItem="E2j-go-2un" secondAttribute="centerY" id="kdb-BN-tBD"/>
@@ -247,6 +240,7 @@
                             <constraint firstItem="LBE-kN-Vg2" firstAttribute="width" secondItem="LBE-kN-Vg2" secondAttribute="height" multiplier="3:4" id="sLg-xz-vAg"/>
                             <constraint firstItem="4aL-tb-ks0" firstAttribute="bottom" secondItem="F9S-ah-lIl" secondAttribute="bottom" id="sYB-B7-81e"/>
                             <constraint firstItem="vQ6-Yx-SRj" firstAttribute="centerX" secondItem="sAj-6V-Do4" secondAttribute="centerX" id="wP5-fh-iMW"/>
+                            <constraint firstItem="m4n-IO-1CF" firstAttribute="height" secondItem="cf6-hJ-Jgn" secondAttribute="height" multiplier="0.2" id="zBR-3M-Y3p"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4aL-tb-ks0"/>
                     </view>
@@ -284,24 +278,24 @@
             <objects>
                 <viewController id="gqx-2G-DaW" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dyd-eR-jaS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yK-w6-xZh">
-                                <rect key="frame" x="170.33333333333334" y="84" width="73.333333333333343" height="32.333333333333343"/>
+                                <rect key="frame" x="475.5" y="84" width="73" height="32.5"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0So-gg-Lhv">
-                                <rect key="frame" x="20" y="126.33333333333331" width="374" height="545.66666666666674"/>
+                                <rect key="frame" x="20" y="126.5" width="984" height="1175.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">NoteChart is designed for for music students, educators, and professionals. The app puts fingering charts at your fingertips via a simple interface so you can focus on creating beautiful music!
+                                <string key="text">NoteChart is designed for for music students, educators, and professionals. The app puts fingering charts at your fingertips via a simple interface so you can focus on creating beautiful music!
 
 100% of all revenue we receive from this app goes to supporting the study and making of music for all. If you want to learn more, or to donate directly, check out [google sites].
 
 Requests? Feedback? Missing your instrument? Leave us a review at https://itunes.apple.com/us/app/notechart/id1295523366 or contact us at notechartapp@gmail.com.
-</mutableString>
+</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
@@ -339,23 +333,23 @@ Requests? Feedback? Missing your instrument? Leave us a review at https://itunes
             <objects>
                 <viewController storyboardIdentifier="main" id="lc1-6o-cVF" customClass="TopViewController" customModule="Jamie_s_Magic_Fingers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Yq-fJ-xXT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqY-AX-cWs">
-                                <rect key="frame" x="268.33333333333331" y="35" width="99.333333333333314" height="318.33333333333331"/>
+                                <rect key="frame" x="656" y="35" width="260.5" height="802"/>
                                 <color key="backgroundColor" red="0.90909522769999995" green="0.62015360590000002" blue="0.24690401549999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clarinet1" translatesAutoresizingMaskIntoConstraints="NO" id="gZE-vv-l91">
-                                <rect key="frame" x="262.66666666666669" y="30" width="109.33333333333331" height="328.33333333333331"/>
+                                <rect key="frame" x="651" y="30" width="270" height="812"/>
                                 <gestureRecognizers/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YHm-kI-yAK">
-                                <rect key="frame" x="46.333333333333343" y="35.000000000000007" width="321.33333333333326" height="100.66666666666669"/>
+                                <rect key="frame" x="107.5" y="35" width="809" height="263"/>
                                 <color key="backgroundColor" red="0.90909522769999995" green="0.62015360590000002" blue="0.24690401549999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Trombone1" translatesAutoresizingMaskIntoConstraints="NO" id="IaF-3L-a6a">
-                                <rect key="frame" x="41.333333333333343" y="30.000000000000007" width="331.33333333333326" height="110.66666666666669"/>
+                                <rect key="frame" x="102.5" y="30" width="819" height="273"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="IaF-3L-a6a" secondAttribute="height" multiplier="3:1" id="B72-is-OBn"/>
                                 </constraints>
@@ -402,7 +396,7 @@ Requests? Feedback? Missing your instrument? Leave us a review at https://itunes
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JPn-9i-oLa" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fV0-fk-oM0">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="1024" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

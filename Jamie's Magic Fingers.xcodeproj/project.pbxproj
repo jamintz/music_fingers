@@ -455,7 +455,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "jamieg/Jamie's Magic Fingers-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -476,7 +476,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "jamieg/Jamie's Magic Fingers-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -491,7 +491,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jm.jamiegTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jamie's Magic Fingers.app/Jamie's Magic Fingers";
 			};
 			name = Debug;
@@ -507,7 +507,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jm.jamiegTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jamie's Magic Fingers.app/Jamie's Magic Fingers";
 			};
 			name = Release;
@@ -522,7 +522,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jm.jamiegUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = jamieg;
 			};
 			name = Debug;
@@ -537,7 +537,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jm.jamiegUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = jamieg;
 			};
 			name = Release;
