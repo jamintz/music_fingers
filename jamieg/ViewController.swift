@@ -151,7 +151,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         super.viewDidLoad()
         
         adView.rootViewController = self
-        adView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        adView.adUnitID = "ca-app-pub-6748094605248065/1511591757"
         adView.load(GADRequest())
                 
         picker.delegate = self
