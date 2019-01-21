@@ -629,7 +629,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         NPVController.views = vList
         [NPVController .viewDidLoad()]
         
-        heading.text = instr+": "+note+keyLabel
+        heading.text = instr+": "+note.prefix(1)+keyLabel+note.suffix(1)
     }
     
 

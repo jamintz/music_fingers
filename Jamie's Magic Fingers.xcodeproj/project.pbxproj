@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E844A6A621F63AEA008FE973 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E844A6A521F63AEA008FE973 /* Assets.xcassets */; };
 		E8480E922055FD2F00567ACF /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8480E912055FD2F00567ACF /* GoogleMobileAds.framework */; };
 		E888AAF61FCB21DF003AF5B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E888AAF51FCB21DF003AF5B7 /* ViewController.swift */; };
 		E893CD211FDEE26A008B01BB /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E893CD201FDEE26A008B01BB /* TopViewController.swift */; };
@@ -16,7 +17,6 @@
 		E8C0FE391F8C6203006A82E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8C0FE371F8C6203006A82E0 /* LaunchScreen.storyboard */; };
 		E8C0FE441F8C6203006A82E0 /* jamiegTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C0FE431F8C6203006A82E0 /* jamiegTests.swift */; };
 		E8C0FE4F1F8C6203006A82E0 /* jamiegUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C0FE4E1F8C6203006A82E0 /* jamiegUITests.swift */; };
-		E8DA69F12056089200280284 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8DA69F02056089100280284 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E844A6A521F63AEA008FE973 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8480E8B2055F42800567ACF /* Jamie's Magic Fingers-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Jamie's Magic Fingers-Bridging-Header.h"; sourceTree = "<group>"; };
 		E8480E912055FD2F00567ACF /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		E888AAF51FCB21DF003AF5B7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,7 +54,6 @@
 		E8C0FE4A1F8C6203006A82E0 /* Jamie's Magic FingersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Jamie's Magic FingersUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C0FE4E1F8C6203006A82E0 /* jamiegUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jamiegUITests.swift; sourceTree = "<group>"; };
 		E8C0FE501F8C6203006A82E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E8DA69F02056089100280284 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +106,7 @@
 		E8C0FE2D1F8C6203006A82E0 /* jamieg */ = {
 			isa = PBXGroup;
 			children = (
-				E8DA69F02056089100280284 /* Assets.xcassets */,
+				E844A6A521F63AEA008FE973 /* Assets.xcassets */,
 				E8C0FE2E1F8C6203006A82E0 /* AppDelegate.swift */,
 				E8C0FE321F8C6203006A82E0 /* Main.storyboard */,
 				E893CD201FDEE26A008B01BB /* TopViewController.swift */,
@@ -246,7 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8C0FE391F8C6203006A82E0 /* LaunchScreen.storyboard in Resources */,
-				E8DA69F12056089200280284 /* Assets.xcassets in Resources */,
+				E844A6A621F63AEA008FE973 /* Assets.xcassets in Resources */,
 				E8C0FE341F8C6203006A82E0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

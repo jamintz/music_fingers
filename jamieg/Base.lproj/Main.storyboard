@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JPn-9i-oLa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JPn-9i-oLa">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,21 +39,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9C1-gE-hr5">
-                                <rect key="frame" x="124.5" y="228" width="126" height="171"/>
-                                <color key="backgroundColor" red="0.90909522769999995" green="0.62015360590000002" blue="0.24690401549999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <rect key="frame" x="124.5" y="228" width="126" height="171.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="t_C4" translatesAutoresizingMaskIntoConstraints="NO" id="ONT-XN-CdK">
-                                <rect key="frame" x="119.5" y="223" width="136" height="181"/>
+                                <rect key="frame" x="119.5" y="223" width="136" height="181.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ONT-XN-CdK" secondAttribute="height" multiplier="3:4" id="8le-Op-700"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YhL-wb-GnM">
-                                <rect key="frame" x="244" y="126" width="88.5" height="289"/>
-                                <color key="backgroundColor" red="0.90909522769999995" green="0.62015360590000002" blue="0.24690401549999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <rect key="frame" x="243.5" y="126" width="89" height="287"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clarinet1" translatesAutoresizingMaskIntoConstraints="NO" id="E2j-go-2un">
-                                <rect key="frame" x="238" y="121" width="99" height="299"/>
+                                <rect key="frame" x="238.5" y="121" width="99" height="297"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="E2j-go-2un" secondAttribute="height" multiplier="1:3" id="F20-Ep-NZb"/>
@@ -62,7 +61,7 @@
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQ6-Yx-SRj">
                                 <rect key="frame" x="42.5" y="126" width="290" height="90"/>
-                                <color key="backgroundColor" red="0.90909522769999995" green="0.62015360590000002" blue="0.24690401549999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Trombone1" translatesAutoresizingMaskIntoConstraints="NO" id="sAj-6V-Do4">
                                 <rect key="frame" x="37.5" y="121" width="300" height="100"/>
@@ -84,11 +83,11 @@
                                 </connections>
                             </slider>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4uf-40-pS7">
-                                <rect key="frame" x="35" y="156.5" width="169.5" height="229.5"/>
-                                <color key="backgroundColor" red="0.90909522769999995" green="0.62015360590000002" blue="0.24690401549999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <rect key="frame" x="35" y="155.5" width="168" height="228"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="b_C4" translatesAutoresizingMaskIntoConstraints="NO" id="LBE-kN-Vg2">
-                                <rect key="frame" x="30" y="151.5" width="179.5" height="239.5"/>
+                                <rect key="frame" x="30" y="150.5" width="178" height="238"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5Ou-UL-e6K">
                                 <rect key="frame" x="0.0" y="283" width="375" height="19"/>
@@ -160,7 +159,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U5h-pa-0EK">
-                                <rect key="frame" x="343.5" y="80" width="21.5" height="21"/>
+                                <rect key="frame" x="344" y="79.5" width="21" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="U5h-pa-0EK" secondAttribute="height" multiplier="1:1" id="thq-j3-Sjh"/>
                                 </constraints>
@@ -172,6 +171,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="9xq-2R-gAn" firstAttribute="top" secondItem="ONT-XN-CdK" secondAttribute="bottom" constant="30" id="03a-7J-d9s"/>
                             <constraint firstItem="F9S-ah-lIl" firstAttribute="centerX" secondItem="cf6-hJ-Jgn" secondAttribute="centerX" id="0Ch-ZP-JBb"/>
@@ -318,7 +318,7 @@ Requests? Feedback? Missing your instrument? Leave us a review at https://itunes
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hlT-ii-mW9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="344.53125" y="532.6171875"/>
+            <point key="canvasLocation" x="558" y="619"/>
         </scene>
         <!--New Page View Controller-->
         <scene sceneID="wKM-yF-8ff">
@@ -337,11 +337,11 @@ Requests? Feedback? Missing your instrument? Leave us a review at https://itunes
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqY-AX-cWs">
-                                <rect key="frame" x="243.5" y="35" width="89" height="288"/>
+                                <rect key="frame" x="243.5" y="35" width="89" height="287"/>
                                 <color key="backgroundColor" red="0.90909522769999995" green="0.62015360590000002" blue="0.24690401549999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clarinet1" translatesAutoresizingMaskIntoConstraints="NO" id="gZE-vv-l91">
-                                <rect key="frame" x="238.5" y="30" width="98.5" height="298"/>
+                                <rect key="frame" x="238.5" y="30" width="99" height="297"/>
                                 <gestureRecognizers/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YHm-kI-yAK">
@@ -388,7 +388,7 @@ Requests? Feedback? Missing your instrument? Leave us a review at https://itunes
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zr4-iB-Ng5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="283.59375" y="1202.9296875"/>
+            <point key="canvasLocation" x="308" y="1405"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xTw-8N-967">
@@ -413,7 +413,7 @@ Requests? Feedback? Missing your instrument? Leave us a review at https://itunes
         <image name="Clarinet1" width="82" height="242"/>
         <image name="Trombone1" width="242" height="82"/>
         <image name="b_C4" width="235" height="404"/>
-        <image name="info" width="50" height="50"/>
+        <image name="info" width="40" height="40"/>
         <image name="t_C4" width="235" height="404"/>
     </resources>
 </document>
