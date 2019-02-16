@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import jamieg
 
 class jamiegTests: XCTestCase {
     
