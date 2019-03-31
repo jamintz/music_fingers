@@ -38,12 +38,18 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var naturalButton: UIButton!
     @IBOutlet weak var sharpButton: UIButton!
     
+    @IBOutlet var vPan: UIPanGestureRecognizer!
     var instruments = [String]()
     var hInstruments = [String]()
     var vInstruments = [String]()
-    
+
     var ind = Int()
-    
+
+    @IBAction func vPanRecognizer(_ sender: Any) {
+        print(vPan.translation(in: vStaff))
+        print("Panning")
+    }
+
     var pos = [String:[String:[String]]]()
     
     let customBlue = UIColor(red:38/255.0,green:208/255.0,blue:206/255.0,alpha:1)
@@ -230,7 +236,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             "D3":["Bass Recorder (F)":["10"],"Great Bass Recorder (C)":["14"],"Trombone":["4"],"Euphonium":["17","10"],"French Horn":["2"],"Bassoon":["16"],"Tuba":["8","17"]],
             "E3":["Bass Recorder (F)":["12"],"Great Bass Recorder (C)":["17"],"Trombone":["2","7"],"Euphonium":["9"],"French Horn":["4"],"Clarinet":["1","2","3"],"Bassoon":["18"],"Tuba":["9","12"]],
             "F3":["Bass Recorder (F)":["13"],"Great Bass Recorder (C)":["18"],"Trombone":["1","6"],"Euphonium":["8"],"French Horn":["5"],"Clarinet":["4","5"],"Bassoon":["19"],"Tuba":["8","17"]],
-            "G3":["Bass Recorder (F)":["17"],"Great Bass Recorder (C)":["20"],"Trombone":["4"],"Trumpet":["5"],"Euphonium":["18","10"],"French Horn":["7"],"Clarinet":["7"],"Bassoon":["21"],"Tuba":["17","10"]],
+            "G3":["Bass Recorder (F)":["17"],"Great Bass Recorder (C)":["20"],"Trombone":["4"],"Trumpet":["5"],"Euphonium":["17","10"],"French Horn":["7"],"Clarinet":["9"],"Bassoon":["21"],"Tuba":["17","10"]],
             "A3":["Bass Recorder (F)":["19"],"Great Bass Recorder (C)":["22"],"Trombone":["2","6"],"Trumpet":["4"],"Euphonium":["9"],"Baritone Sax":["0"],"French Horn":["39"],"Clarinet":["11"],"Bassoon":["23"],"Tuba":["9","17","18"]],
             "B3":["Bass Recorder (F)":["21"],"Great Bass Recorder (C)":["24","25"],"Flute":["37"],"Trombone":["4","7"],"Trumpet":["2"],"Euphonium":["17"],"Tenor Sax":["2"],"Alto Sax":["2"],"Baritone Sax":["2"],"French Horn":["11"],"Clarinet":["13","14"],"Bassoon":["25"],"Tuba":["17","10","13"],"Oboe":["3"]],
             "C4":["Tenor Recorder (C)":["1"],"Bass Recorder (F)":["22"],"Great Bass Recorder (C)":["26"],"Soprano Recorder (C)":["1"],"Trombone":["3","6"],"Trumpet":["0"],"Euphonium":["16","18"],"Flute":["0"],"Tenor Sax":["3"],"Alto Sax":["3"],"Baritone Sax":["3"],"French Horn":["12"],"Clarinet":["15"],"Bassoon":["26"],"Tuba":["16","8","18"],"Oboe":["4","5"]],
